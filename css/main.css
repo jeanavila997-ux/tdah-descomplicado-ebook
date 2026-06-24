@@ -28,6 +28,7 @@
   --bg-surface: #1e293b;
   --bg-surface-elevated: #334155;
   --bg-overlay: rgba(0, 0, 0, 0.7);
+  --bg-nav: rgba(15, 23, 42, 0.85);
 
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
@@ -71,7 +72,7 @@
   /* Layout */
   --header-height: 60px;
   --toolbar-height: 52px;
-  --nav-width: 300px;
+  --nav-width: 280px;
   --content-max-width: 720px;
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
@@ -103,6 +104,7 @@
   --bg-surface: #ffffff;
   --bg-surface-elevated: #f1f5f9;
   --bg-overlay: rgba(15, 23, 42, 0.5);
+  --bg-nav: rgba(255, 255, 255, 0.85);
 
   --text-primary: #0f172a;
   --text-secondary: #334155;
@@ -129,6 +131,14 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 html {
@@ -326,8 +336,11 @@ body {
   width: var(--nav-width);
   max-width: 85vw;
   height: 100vh;
-  background: var(--bg-surface);
+  background: var(--bg-nav);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-right: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-lg);
   z-index: 200;
   transform: translateX(-100%);
   transition: transform var(--transition-slow);
@@ -372,10 +385,10 @@ body {
 
 .nav-chapter-header {
   font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 10px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   color: var(--text-muted);
   padding: var(--space-2) var(--space-4);
   margin-bottom: var(--space-1);
@@ -401,6 +414,7 @@ body {
 
 .nav-list a,
 .nav-list button {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -413,7 +427,7 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
   text-align: left;
 }
 
@@ -425,14 +439,26 @@ body {
 
 .nav-list a.active,
 .nav-list button.active {
-  background: var(--color-primary-50);
+  background: linear-gradient(90deg, var(--color-primary-50) 0%, transparent 100%);
   color: var(--color-primary-dark);
   font-weight: 600;
 }
 
+.nav-list a.active::before,
+.nav-list button.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 4px;
+  background: var(--color-primary);
+  border-radius: 0 4px 4px 0;
+}
+
 [data-theme="dark"] .nav-list a.active,
 [data-theme="dark"] .nav-list button.active {
-  background: rgba(14, 165, 233, 0.15);
+  background: linear-gradient(90deg, rgba(14, 165, 233, 0.15) 0%, transparent 100%);
   color: var(--color-primary-light);
 }
 
@@ -471,7 +497,7 @@ body {
   z-index: 150;
   opacity: 0;
   visibility: hidden;
-  transition: all var(--transition-base);
+  transition: opacity var(--transition-base), visibility var(--transition-base);
 }
 
 .nav-overlay.active {
@@ -542,6 +568,7 @@ body {
   line-height: var(--line-height-tight);
   color: var(--text-primary);
   margin-bottom: var(--space-4);
+  text-wrap: balance;
 }
 
 .chapter-subtitle {
@@ -559,6 +586,7 @@ body {
   font-weight: 700;
   color: var(--text-primary);
   margin: var(--space-10) 0 var(--space-4);
+  text-wrap: balance;
 }
 
 .content-body h4 {
@@ -566,6 +594,7 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   margin: var(--space-8) 0 var(--space-3);
+  text-wrap: balance;
 }
 
 .content-body p {
@@ -713,7 +742,7 @@ body {
   font-weight: 600;
   cursor: pointer;
   border: none;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -766,7 +795,7 @@ body {
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
   font-size: var(--text-base);
 }
 
@@ -812,7 +841,7 @@ body {
   max-height: 100vh;
   opacity: 0;
   visibility: hidden;
-  transition: all var(--transition-base);
+  transition: opacity var(--transition-base), visibility var(--transition-base);
 }
 
 .modal[open] {
@@ -889,7 +918,7 @@ select {
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 input:focus,
@@ -979,7 +1008,7 @@ textarea::placeholder {
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
   text-align: left;
 }
 

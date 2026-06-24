@@ -12,7 +12,7 @@
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
-  transition: all var(--transition-fast);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
 }
 
 .card-hover:hover {
@@ -156,7 +156,7 @@
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast), border-bottom-color var(--transition-fast);
   margin-bottom: -1px;
 }
 
@@ -345,7 +345,7 @@ tbody tr:hover {
 
 .tag-clickable {
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
 }
 
 .tag-clickable:hover {
@@ -470,7 +470,7 @@ tbody tr:hover {
   flex-shrink: 0;
   margin-top: 2px;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .checklist-checkbox.checked {
@@ -521,7 +521,7 @@ tbody tr:hover {
   align-items: center;
   justify-content: center;
   font-size: var(--text-sm);
-  transition: all var(--transition-fast);
+  transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .share-btn:hover {

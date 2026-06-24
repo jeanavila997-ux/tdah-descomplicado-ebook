@@ -28,3 +28,8 @@ build/
 
 # Supabase (secrets only)
 supabase/.temp/
+
+# Agents & AI Tools
+.agents/
+skills-lock.json
+.gemini/
