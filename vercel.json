@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "name": "tdah-descomplicado-ebook",
+  "name": "kimi-agent-deployment-v12",
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/$1" }
+    { "src": "/login", "dest": "/login.html" },
+    { "src": "/privacidade", "dest": "/privacidade.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ],
   "headers": [
     {
