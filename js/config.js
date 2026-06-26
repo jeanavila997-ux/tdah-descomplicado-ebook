@@ -79,8 +79,8 @@ export const CONFIG = {
   // Nome do ebook
   appName: 'TDAH Descomplicado',
 
-  // Versão (deve bater com service-worker.js)
-  version: '1.0.0',
+  // Versão (deve bater com service-worker.js CACHE_NAME)
+  version: '1.1.0',
 
   // Supabase
   supabase: SUPABASE_CONFIG,

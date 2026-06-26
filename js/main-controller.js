@@ -70,6 +70,9 @@ export async function init() {
 
   setupTheme();
   setupActiveFocus();
+  setupBionic();
+  setupFocusTimer();
+  setupFocusSound();
   setupEventListeners();
   setupNavigation();
   setupGlossary();
@@ -123,6 +126,11 @@ function cacheDOM() {
     btnTextSize: document.getElementById('btn-text-size'),
     btnGlossary: document.getElementById('btn-glossary'),
     btnActiveFocus: document.getElementById('btn-active-focus'),
+    btnBionic: document.getElementById('btn-bionic'),
+    btnFocusTimer: document.getElementById('btn-focus-timer'),
+    btnFocusSound: document.getElementById('btn-focus-sound'),
+    timerModal: document.getElementById('timer-modal'),
+    soundModal: document.getElementById('sound-modal'),
     btnDownloadPdf: document.getElementById('btn-download-pdf'),
     themeToggle: document.getElementById('theme-toggle'),
     glossaryModal: document.getElementById('glossary-modal'),
@@ -142,14 +150,391 @@ function setupTheme() {
   });
 }
 
+function isModalOpen() {
+  return $.glossaryModal?.open || $.quizModal?.open || $.timerModal?.open || $.soundModal?.open;
+}
+
 // ==========================================
-// ACTIVE FOCUS MODE
+// LEITURA BIÔNICA
 // ==========================================
+let bionicEnabled = localStorage.getItem('tdah-ebook:bionic') === 'true';
+
+function setupBionic() {
+  updateBionicUI();
+
+  $.btnBionic?.addEventListener('click', () => {
+    bionicEnabled = !bionicEnabled;
+    localStorage.setItem('tdah-ebook:bionic', bionicEnabled);
+    updateBionicUI();
+    applyBionicToContent();
+    showToast(bionicEnabled ? '🔤 Leitura Biônica ativada' : 'Leitura Biônica desativada');
+  });
+}
+
+function updateBionicUI() {
+  if (!$.btnBionic) return;
+  $.btnBionic.classList.toggle('active', bionicEnabled);
+  $.btnBionic.setAttribute('aria-pressed', bionicEnabled);
+}
+
+function applyBionicToContent() {
+  if (!$.contentArea) return;
+
+  // Remove bionic markup anterior
+  document.querySelectorAll('.bionic-bold').forEach(el => {
+    const parent = el.parentNode;
+    parent.replaceChild(document.createTextNode(el.textContent), el);
+    parent.normalize();
+  });
+
+  if (!bionicEnabled) return;
+
+  const textNodes = [];
+  const walker = document.createTreeWalker(
+    $.contentArea,
+    NodeFilter.SHOW_TEXT,
+    {
+      acceptNode: (node) => {
+        // Ignora dentro de scripts, estilos e elementos já processados
+        const parent = node.parentElement;
+        if (!parent) return NodeFilter.FILTER_REJECT;
+        if (parent.closest('script, style, .bionic-bold, .checklist-checkbox')) return NodeFilter.FILTER_REJECT;
+        if (!node.textContent.trim()) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    }
+  );
+
+  let node;
+  while ((node = walker.nextNode())) {
+    textNodes.push(node);
+  }
+
+  textNodes.forEach(node => {
+    const text = node.textContent;
+    const fragment = document.createDocumentFragment();
+
+    // Separa palavras mantendo espaçamento e pontuação
+    const parts = text.split(/(\s+|[\p{P}\p{S}])/u);
+
+    parts.forEach(part => {
+      if (!part) return;
+
+      if (/^\s+$/.test(part) || /^[\p{P}\p{S}]+$/u.test(part)) {
+        fragment.appendChild(document.createTextNode(part));
+        return;
+      }
+
+      const boldLength = Math.max(1, Math.ceil(part.length / 2));
+      const boldPart = part.slice(0, boldLength);
+      const restPart = part.slice(boldLength);
+
+      const strong = document.createElement('strong');
+      strong.className = 'bionic-bold';
+      strong.style.fontWeight = '600';
+      strong.style.color = 'inherit';
+      strong.textContent = boldPart;
+
+      fragment.appendChild(strong);
+      if (restPart) {
+        fragment.appendChild(document.createTextNode(restPart));
+      }
+    });
+
+    node.parentNode.replaceChild(fragment, node);
+  });
+}
+
+// ==========================================
+// TIMER DE FOCO
+// ==========================================
+let timerState = {
+  totalSeconds: 25 * 60,
+  remaining: 25 * 60,
+  interval: null,
+  running: false
+};
+
+function setupFocusTimer() {
+  $.btnFocusTimer?.addEventListener('click', () => {
+    openModalWithAnimation($.timerModal);
+  });
+
+  $.timerModal?.querySelector('.modal-close')?.addEventListener('click', () => {
+    closeModalWithAnimation($.timerModal);
+  });
+
+  // Presets
+  $.timerModal?.querySelectorAll('[data-minutes]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const minutes = parseInt(btn.dataset.minutes);
+      resetTimer(minutes * 60);
+      updateTimerPresetUI(btn);
+    });
+  });
+
+  document.getElementById('timer-start')?.addEventListener('click', startTimer);
+  document.getElementById('timer-pause')?.addEventListener('click', pauseTimer);
+  document.getElementById('timer-reset')?.addEventListener('click', () => resetTimer(timerState.totalSeconds));
+
+  updateTimerDisplay();
+}
+
+function updateTimerPresetUI(activeBtn) {
+  $.timerModal?.querySelectorAll('[data-minutes]').forEach(btn => {
+    btn.classList.toggle('btn-primary', btn === activeBtn);
+    btn.classList.toggle('btn-outline', btn !== activeBtn);
+  });
+}
+
+function updateTimerDisplay() {
+  const display = document.getElementById('timer-display');
+  if (!display) return;
+  const minutes = Math.floor(timerState.remaining / 60).toString().padStart(2, '0');
+  const seconds = (timerState.remaining % 60).toString().padStart(2, '0');
+  display.textContent = `${minutes}:${seconds}`;
+  document.title = timerState.running && timerState.remaining < timerState.totalSeconds
+    ? `${minutes}:${seconds} · Foco · TDAH Descomplicado`
+    : `${getStructure().title || 'TDAH Descomplicado'} — Ebook Interativo`;
+}
+
+function startTimer() {
+  if (timerState.running) return;
+  timerState.running = true;
+  toggleTimerButtons(true);
+
+  timerState.interval = setInterval(() => {
+    timerState.remaining--;
+    updateTimerDisplay();
+
+    if (timerState.remaining <= 0) {
+      completeTimer();
+    }
+  }, 1000);
+}
+
+function pauseTimer() {
+  timerState.running = false;
+  clearInterval(timerState.interval);
+  toggleTimerButtons(false);
+  updateTimerDisplay();
+}
+
+function resetTimer(seconds) {
+  pauseTimer();
+  timerState.totalSeconds = seconds;
+  timerState.remaining = seconds;
+  updateTimerDisplay();
+}
+
+function completeTimer() {
+  pauseTimer();
+  timerState.remaining = 0;
+  updateTimerDisplay();
+  playSoftBell();
+  showToast('🛎️ Sessão de foco concluída!');
+}
+
+function toggleTimerButtons(running) {
+  const startBtn = document.getElementById('timer-start');
+  const pauseBtn = document.getElementById('timer-pause');
+  if (startBtn) startBtn.style.display = running ? 'none' : 'inline-flex';
+  if (pauseBtn) pauseBtn.style.display = running ? 'inline-flex' : 'none';
+}
+
+function playSoftBell() {
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+
+    const ctx = new AudioContext();
+    const oscillator = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+    oscillator.frequency.exponentialRampToValueAtTime(261.63, ctx.currentTime + 1.5); // C4
+
+    gain.gain.setValueAtTime(0.001, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.15, ctx.currentTime + 0.1);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.5);
+
+    oscillator.connect(gain);
+    gain.connect(ctx.destination);
+
+    oscillator.start();
+    oscillator.stop(ctx.currentTime + 1.5);
+  } catch (err) {
+    console.error('[timer] Erro ao tocar sino:', err);
+  }
+}
+
+// ==========================================
+// RUÍDO FOCO (Web Audio API)
+// ==========================================
+let soundState = {
+  ctx: null,
+  noise: null,
+  gain: null,
+  playing: false,
+  volume: parseFloat(localStorage.getItem('tdah-ebook:focusSoundVolume')) || 0.3
+};
+
+function setupFocusSound() {
+  $.btnFocusSound?.addEventListener('click', () => {
+    openModalWithAnimation($.soundModal);
+  });
+
+  $.soundModal?.querySelector('.modal-close')?.addEventListener('click', () => {
+    closeModalWithAnimation($.soundModal);
+  });
+
+  const volumeInput = document.getElementById('sound-volume');
+  if (volumeInput) {
+    volumeInput.value = Math.round(soundState.volume * 100);
+    volumeInput.addEventListener('input', (e) => {
+      soundState.volume = parseInt(e.target.value) / 100;
+      localStorage.setItem('tdah-ebook:focusSoundVolume', soundState.volume);
+      if (soundState.gain) {
+        soundState.gain.gain.setTargetAtTime(soundState.volume, soundState.ctx.currentTime, 0.1);
+      }
+    });
+  }
+
+  const toggleBtn = document.getElementById('sound-toggle');
+  toggleBtn?.addEventListener('click', () => {
+    if (soundState.playing) {
+      stopFocusSound();
+    } else {
+      startFocusSound();
+    }
+  });
+
+  updateFocusSoundUI();
+}
+
+function createPinkNoise(ctx) {
+  const bufferSize = ctx.sampleRate * 2; // 2 segundos
+  const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+  const output = buffer.getChannelData(0);
+
+  let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+  for (let i = 0; i < bufferSize; i++) {
+    const white = Math.random() * 2 - 1;
+    b0 = 0.99886 * b0 + white * 0.0555179;
+    b1 = 0.99332 * b1 + white * 0.0750759;
+    b2 = 0.96900 * b2 + white * 0.1538520;
+    b3 = 0.86650 * b3 + white * 0.3104856;
+    b4 = 0.55000 * b4 + white * 0.5329522;
+    b5 = -0.7616 * b5 - white * 0.0168980;
+    output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.11;
+    b6 = white * 0.115926;
+  }
+
+  const noise = ctx.createBufferSource();
+  noise.buffer = buffer;
+  noise.loop = true;
+  return noise;
+}
+
+function startFocusSound() {
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) {
+      showToast('⚠️ Seu navegador não suporta áudio');
+      return;
+    }
+
+    if (!soundState.ctx) {
+      soundState.ctx = new AudioContext();
+    }
+
+    if (soundState.ctx.state === 'suspended') {
+      soundState.ctx.resume();
+    }
+
+    const gain = soundState.ctx.createGain();
+    gain.gain.setValueAtTime(0.001, soundState.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(soundState.volume, soundState.ctx.currentTime + 1);
+
+    const noise = createPinkNoise(soundState.ctx);
+    noise.connect(gain);
+    gain.connect(soundState.ctx.destination);
+    noise.start();
+
+    soundState.noise = noise;
+    soundState.gain = gain;
+    soundState.playing = true;
+
+    updateFocusSoundUI();
+    showToast('🌊 Ruído Foco iniciado');
+  } catch (err) {
+    console.error('[sound] Erro ao iniciar ruído:', err);
+    showToast('❌ Erro ao iniciar ruído');
+  }
+}
+
+function stopFocusSound() {
+  if (!soundState.noise) return;
+
+  try {
+    const now = soundState.ctx?.currentTime || 0;
+    if (soundState.gain) {
+      soundState.gain.gain.cancelScheduledValues(now);
+      soundState.gain.gain.setValueAtTime(soundState.gain.gain.value, now);
+      soundState.gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+    }
+
+    setTimeout(() => {
+      soundState.noise?.stop();
+      soundState.noise?.disconnect();
+      soundState.gain?.disconnect();
+      soundState.noise = null;
+      soundState.gain = null;
+      soundState.playing = false;
+      updateFocusSoundUI();
+    }, 500);
+
+    soundState.playing = false;
+    updateFocusSoundUI();
+  } catch (err) {
+    console.error('[sound] Erro ao parar ruído:', err);
+  }
+}
+
+function updateFocusSoundUI() {
+  const toggleBtn = document.getElementById('sound-toggle');
+  if (!toggleBtn) return;
+
+  toggleBtn.textContent = soundState.playing ? 'Parar Ruído' : 'Iniciar Ruído';
+  toggleBtn.classList.toggle('btn-primary', !soundState.playing);
+  toggleBtn.classList.toggle('btn-outline', soundState.playing);
+
+  if ($.btnFocusSound) {
+    $.btnFocusSound.classList.toggle('active', soundState.playing);
+    $.btnFocusSound.setAttribute('aria-pressed', soundState.playing);
+  }
+}
+
+// ==========================================
+// ACTIVE FOCUS (Modo Hiperfoco 2.0)
+// ==========================================
+let focusBlocks = [];
+let currentFocusIndex = -1;
+
 function setupActiveFocus() {
   const updateFocusUI = () => {
     const isActive = state.activeFocus;
     $.btnActiveFocus?.classList.toggle('active', isActive);
+    $.btnActiveFocus?.setAttribute('aria-pressed', isActive);
     $.contentArea?.classList.toggle('focus-active', isActive);
+
+    if (isActive) {
+      buildFocusBlocks();
+      highlightFocusBlock(0);
+    } else {
+      clearFocusBlocks();
+    }
   };
 
   updateFocusUI();
@@ -158,8 +543,58 @@ function setupActiveFocus() {
     state.activeFocus = !state.activeFocus;
     localStorage.setItem(STORAGE_KEYS.activeFocus, state.activeFocus);
     updateFocusUI();
-    showToast(state.activeFocus ? '⚡ Modo Foco Ativo habilitado!' : 'Modo Foco Ativo desabilitado.');
+    showToast(state.activeFocus ? '⚡ Modo Hiperfoco habilitado!' : 'Modo Hiperfoco desabilitado.');
   });
+}
+
+function buildFocusBlocks() {
+  if (!$.contentArea) return;
+  clearFocusBlocks();
+
+  // Seleciona blocos legíveis: parágrafos, itens de lista, cards, timeline items
+  focusBlocks = Array.from($.contentArea.querySelectorAll(
+    'article p, article li, article .card, article .timeline-item, article .accordion-item, article .highlight-box, article .info-box, article .warning-box'
+  )).filter(el => el.textContent.trim().length > 0);
+
+  focusBlocks.forEach((el, idx) => {
+    el.classList.add('focus-block');
+    el.dataset.focusIndex = idx;
+    el.addEventListener('mouseenter', () => highlightFocusBlock(idx));
+    el.addEventListener('click', () => highlightFocusBlock(idx));
+  });
+}
+
+function clearFocusBlocks() {
+  focusBlocks.forEach(el => {
+    el.classList.remove('focus-block', 'focus-block-active');
+    delete el.dataset.focusIndex;
+  });
+  focusBlocks = [];
+  currentFocusIndex = -1;
+}
+
+function highlightFocusBlock(index) {
+  if (!state.activeFocus || focusBlocks.length === 0) return;
+  if (index < 0) index = 0;
+  if (index >= focusBlocks.length) index = focusBlocks.length - 1;
+
+  currentFocusIndex = index;
+  focusBlocks.forEach((el, idx) => {
+    el.classList.toggle('focus-block-active', idx === index);
+  });
+}
+
+// Navegação por blocos no modo Hiperfoco
+function handleFocusBlockNavigation(e) {
+  if (!state.activeFocus) return;
+
+  if (e.key === 'ArrowDown' || e.key === 'j') {
+    e.preventDefault();
+    highlightFocusBlock(currentFocusIndex + 1);
+  } else if (e.key === 'ArrowUp' || e.key === 'k') {
+    e.preventDefault();
+    highlightFocusBlock(currentFocusIndex - 1);
+  }
 }
 
 // ==========================================
@@ -193,25 +628,45 @@ function setupEventListeners() {
 
   // Quiz close
   $.quizModal?.querySelector('.modal-close')?.addEventListener('click', closeQuiz);
+  $.quizModal?.addEventListener('click', (e) => {
+    if (e.target.closest('[data-action="close-quiz"]')) closeQuiz();
+  });
 
   // Search glossary
   document.getElementById('glossary-search')?.addEventListener('input', handleGlossarySearch);
 
   // Touch swipe
   setupSwipe();
+
+  // Event delegation para botões injetados no conteúdo (sem onclick inline)
+  $.contentArea?.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-action]');
+    if (!btn) return;
+
+    const action = btn.dataset.action;
+    if (action === 'next-chapter') {
+      goToPage(state.currentPage + 1);
+    } else if (action === 'start-quiz') {
+      startQuiz(btn.dataset.quizId);
+    }
+  });
 }
 
 function handleKeydown(e) {
+  if (state.activeFocus) {
+    handleFocusBlockNavigation(e);
+    // Se usou setas em modo hiperfoco, não navega de página
+    if (['ArrowUp', 'ArrowDown', 'j', 'k'].includes(e.key)) return;
+  }
+
   if (isModalOpen()) return;
 
   switch (e.key) {
     case 'ArrowLeft':
-    case 'ArrowUp':
       e.preventDefault();
       goPrev();
       break;
     case 'ArrowRight':
-    case 'ArrowDown':
     case ' ':
       e.preventDefault();
       goNext();
@@ -220,12 +675,18 @@ function handleKeydown(e) {
       closeNav();
       closeGlossary();
       closeQuiz();
+      closeTimerModal();
+      closeSoundModal();
       break;
   }
 }
 
-function isModalOpen() {
-  return $.glossaryModal?.open || $.quizModal?.open;
+function closeTimerModal() {
+  $.timerModal?.close();
+}
+
+function closeSoundModal() {
+  $.soundModal?.close();
 }
 
 // ==========================================
@@ -295,7 +756,6 @@ function setupNavigation() {
           <button
             class="${isActive ? 'active' : ''}"
             data-page="${index}"
-            onclick="window.__navigateTo(${index})"
           >
             <span class="nav-item-number">${icon}</span>
             <span class="nav-item-title-text" style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left;" title="${displayTitle}">
@@ -325,13 +785,16 @@ function setupNavigation() {
       </li>
     `;
   }).join('');
-}
 
-// Expose para onclick inline
-window.__navigateTo = (index) => {
-  goToPage(index);
-  closeNav();
-};
+  // Event delegation: cliques nos botões de navegação (sem onclick inline)
+  $.navList?.querySelectorAll('button[data-page]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const index = parseInt(btn.dataset.page, 10);
+      goToPage(index);
+      closeNav();
+    });
+  });
+}
 
 async function hasPaidAccess() {
   if (!CONFIG.isPaywallEnabled) return true;
@@ -496,7 +959,7 @@ function renderChapterCover(page) {
       <div style="font-size:4rem;margin-bottom:1rem;">${page.icon || '📖'}</div>
       <span class="badge badge-primary" style="margin-bottom:1rem;">${page.title}</span>
       <h1 class="chapter-title" style="margin-top:1rem;">${page.subtitle}</h1>
-      <button class="btn btn-primary btn-large" onclick="window.__navigateTo(${state.currentPage + 1})" style="margin-top:2rem;">
+      <button class="btn btn-primary btn-large" data-action="next-chapter" style="margin-top:2rem;">
         Começar Capítulo →
       </button>
     </div>
@@ -516,6 +979,16 @@ function renderContent(page) {
 
   // Re-attach checklist listeners
   setupChecklist();
+
+  // Re-aplica leitura biônica se ativa
+  if (bionicEnabled) {
+    applyBionicToContent();
+  }
+
+  // Reconstrói blocos de foco se modo hiperfoco ativo
+  if (state.activeFocus) {
+    buildFocusBlocks();
+  }
 }
 
 function renderQuizPlaceholder(page) {
@@ -525,7 +998,7 @@ function renderQuizPlaceholder(page) {
       <div style="font-size:3rem;margin-bottom:1rem;">🎯</div>
       <h2 class="chapter-title">${quiz?.title || page.title}</h2>
       <p style="color:var(--text-secondary);margin-bottom:2rem;">${quiz?.description || ''}</p>
-      <button class="btn btn-primary btn-large" onclick="window.__startQuiz('${page.quizId}')">
+      <button class="btn btn-primary btn-large" data-action="start-quiz" data-quiz-id="${page.quizId}">
         Iniciar Quiz
       </button>
     </div>
@@ -584,7 +1057,9 @@ function setupChecklist() {
 // ==========================================
 // QUIZ
 // ==========================================
-window.__startQuiz = (quizId) => {
+window.__startQuiz = startQuiz; // mantido por compat; chamado via delegation abaixo
+
+function startQuiz(quizId) {
   const quiz = getQuizzes()[quizId];
   if (!quiz) return;
 
@@ -595,7 +1070,7 @@ window.__startQuiz = (quizId) => {
   }
 
   openModalWithAnimation($.quizModal);
-};
+}
 
 function renderScoredQuiz(quiz, quizId) {
   const body = document.getElementById('quiz-body');
@@ -672,7 +1147,7 @@ function renderStrategyQuiz(quiz) {
           <div class="quiz-result-score">💡</div>
           <h3 style="margin-bottom:1rem;">Sua Estratégia Ideal</h3>
           <p style="color:var(--text-secondary);margin-bottom:2rem;">${message}</p>
-          <button class="btn btn-primary" onclick="window.__closeQuiz()">Fechar</button>
+          <button class="btn btn-primary" data-action="close-quiz">Fechar</button>
         </div>
       `;
     });
@@ -688,7 +1163,7 @@ function showQuizResult(quiz, score, quizId) {
       <div class="quiz-result-score">${score}</div>
       <h3 style="margin-bottom:0.5rem;">${result?.label || 'Resultado'}</h3>
       <p style="color:var(--text-secondary);margin-bottom:2rem;">${result?.description || ''}</p>
-      <button class="btn btn-primary" onclick="window.__closeQuiz()">Fechar</button>
+      <button class="btn btn-primary" data-action="close-quiz">Fechar</button>
     </div>
   `;
 
@@ -697,13 +1172,11 @@ function showQuizResult(quiz, score, quizId) {
   localStorage.setItem(STORAGE_KEYS.quizResults, JSON.stringify(state.quizResults));
 }
 
-window.__closeQuiz = () => {
-  closeModalWithAnimation($.quizModal);
-};
-
 function closeQuiz() {
   closeModalWithAnimation($.quizModal);
 }
+
+window.__closeQuiz = closeQuiz; // compat
 
 // ==========================================
 // GLOSSARY
@@ -838,19 +1311,35 @@ function loadProgress() {
 // ==========================================
 // PDF EXPORT
 // ==========================================
-function downloadPDF() {
+// Carrega jsPDF sob demanda (lazy) apenas quando o usuário exporta.
+let jspdfPromise = null;
+function loadJsPDF() {
+  if (window.jspdf) return Promise.resolve(window.jspdf);
+  if (jspdfPromise) return jspdfPromise;
+  jspdfPromise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = './js/vendor/jspdf.umd.min.js';
+    script.onload = () => resolve(window.jspdf);
+    script.onerror = () => reject(new Error('Falha ao carregar jsPDF'));
+    document.head.appendChild(script);
+  });
+  return jspdfPromise;
+}
+
+async function downloadPDF() {
   showToast('📥 Gerando PDF...');
 
-  // Verifica se jsPDF está disponível
-  if (typeof jspdf === 'undefined') {
-    showToast('⏳ Carregando biblioteca de PDF...');
-    // Fallback: tenta novamente em 1s
-    setTimeout(downloadPDF, 1000);
+  let jspdfLib;
+  try {
+    jspdfLib = await loadJsPDF();
+  } catch (err) {
+    showToast('❌ Não foi possível carregar a biblioteca de PDF.');
+    console.error('[app.js] jsPDF load error:', err);
     return;
   }
 
   try {
-    const { jsPDF } = jspdf;
+    const { jsPDF } = jspdfLib;
     const doc = new jsPDF();
 
     // Título
@@ -952,6 +1441,9 @@ function showPaywall() {
         </a>
         <div class="auth-divider">ou</div>
         <a href="login.html" class="btn btn-outline">Já tenho acesso — Fazer login</a>
+        <p style="margin-top:1.5rem;font-size:0.75rem;color:var(--text-muted);">
+          Dúvidas ou problema com acesso? <a href="mailto:bookflow@ebooksaude.shop" style="color:var(--color-primary);">bookflow@ebooksaude.shop</a>
+        </p>
       </div>
     `;
   }
@@ -975,20 +1467,23 @@ function isUserAuthenticated() {
 // SERVICE WORKER
 // ==========================================
 function setupServiceWorker() {
-  // Service Worker temporariamente desabilitado para evitar cache agressivo
-  // em desenvolvimento. Reative após confirmar que tudo funciona:
-  //
-  // if (!('serviceWorker' in navigator)) return;
-  // navigator.serviceWorker.register('/service-worker.js')
-  //   .then(reg => console.log('[app.js] SW registrado:', reg.scope))
-  //   .catch(err => console.error('[app.js] Erro no SW:', err));
-  //
-  // Por enquanto, unregister qualquer SW existente:
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(regs => {
-      regs.forEach(r => r.unregister());
-    });
-  }
+  // PWA offline-first: registra o service worker em produção.
+  // Em desenvolvimento (localhost) pulamos para evitar cache agressivo
+  // durante iteração, mas mantemos compatível.
+  if (!('serviceWorker' in navigator)) return;
+
+  const isDev = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+  if (isDev && !CONFIG.features.offlineMode) return;
+
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(reg => {
+        console.log('[app.js] SW registrado:', reg.scope);
+        // Força update quando uma nova versão do SW estiver disponível
+        if (reg.waiting) reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+      })
+      .catch(err => console.error('[app.js] Erro no SW:', err));
+  });
 }
 
 // ==========================================

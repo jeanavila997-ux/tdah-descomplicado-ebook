@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <meta name="theme-color" content="#0f172a">
-  <meta name="description" content="Ebook interativo sobre TDAH: entenda seu cérebro, organize sua rotina e descubra estratégias baseadas em evidências.">
+  <meta name="theme-color" content="#fdfdfd">
+  <meta name="description" content="TDAH Descomplicado — Kit de Produtividade Neuro-Compatível: ebook interativo, timer de foco, leitura biônica e estratégias práticas para mentes com TDAH.">
 
   <!-- CSP restritiva - whitelist explícita de domínios -->
   <meta http-equiv="Content-Security-Policy" content="
@@ -28,7 +28,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/main.css">
@@ -46,11 +46,10 @@
   <!-- Skip link para acessibilidade -->
   <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
 
-  <!-- Disclaimer médico fixo (dinâmico via JS) -->
+  <!-- Disclaimer médico persistente -->
   <div class="disclaimer-bar" id="disclaimer-bar" role="banner" aria-label="Aviso médico">
     <span class="disclaimer-icon">⚕️</span>
     <p id="disclaimer-text">Este conteúdo é educativo e não substitui orientação médica profissional. Sempre converse com seu médico antes de qualquer decisão sobre tratamento.</p>
-    <button class="disclaimer-close" aria-label="Fechar aviso" onclick="this.parentElement.remove()">✕</button>
   </div>
 
   <!-- App Shell -->
@@ -104,7 +103,17 @@
           <span>Capítulo 1</span>
         </div>
         <div class="toolbar-actions">
-          <button class="btn-icon" id="btn-active-focus" aria-label="Modo Foco Ativo" title="Ativar Modo Foco Ativo">
+          <button class="btn-icon" id="btn-bionic" aria-label="Leitura Biônica" title="Leitura Biônica">
+            <span class="bionic-icon-on" aria-hidden="true">B</span>
+            <span class="bionic-icon-off" aria-hidden="true">b</span>
+          </button>
+          <button class="btn-icon" id="btn-focus-timer" aria-label="Timer de Foco" title="Timer de Foco">
+            ⏱️
+          </button>
+          <button class="btn-icon" id="btn-focus-sound" aria-label="Ruído Foco" title="Ruído Foco">
+            🌊
+          </button>
+          <button class="btn-icon" id="btn-active-focus" aria-label="Modo Hiperfoco" title="Modo Hiperfoco">
             ⚡
           </button>
           <button class="btn-icon" id="btn-bookmark" aria-label="Adicionar marcador">
@@ -178,7 +187,53 @@
     </div>
   </dialog>
 
-  <!-- Modal: Auth Gateway (Paywall) -->
+  <!-- Modal: Timer de Foco -->
+  <dialog class="modal" id="timer-modal" aria-labelledby="timer-title" closedby="any">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="timer-title">⏱️ Timer de Foco</h2>
+        <button class="btn-icon modal-close" aria-label="Fechar timer">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="timer-display" id="timer-display">25:00</div>
+        <div class="timer-presets">
+          <button class="btn btn-outline btn-small" data-minutes="5">5 min</button>
+          <button class="btn btn-outline btn-small" data-minutes="15">15 min</button>
+          <button class="btn btn-primary btn-small" data-minutes="25">25 min</button>
+        </div>
+        <div class="timer-controls">
+          <button class="btn btn-primary" id="timer-start">Iniciar Foco</button>
+          <button class="btn btn-outline" id="timer-pause" style="display:none;">Pausar</button>
+          <button class="btn btn-outline" id="timer-reset">Reiniciar</button>
+        </div>
+        <p class="timer-hint">Sinal suave ao final. Nenhum bip estressante.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Modal: Ruído Foco -->
+  <dialog class="modal" id="sound-modal" aria-labelledby="sound-title" closedby="any">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="sound-title">🌊 Ruído Foco</h2>
+        <button class="btn-icon modal-close" aria-label="Fechar ruído">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="color:var(--text-secondary);margin-bottom:var(--space-4);">
+          Ruído rosa suave para mascarar distrações sem cansar o cérebro.
+        </p>
+        <div class="sound-control">
+          <button class="btn btn-primary btn-large" id="sound-toggle" style="width:100%;">
+            Iniciar Ruído
+          </button>
+        </div>
+        <div class="volume-control">
+          <label for="sound-volume">Volume</label>
+          <input type="range" id="sound-volume" min="0" max="100" value="30">
+        </div>
+      </div>
+    </div>
+  </dialog>
   <dialog class="modal modal-large" id="auth-modal" aria-labelledby="auth-title">
     <div class="modal-content">
       <div class="auth-gateway" id="auth-gateway">
@@ -189,10 +244,6 @@
 
   <!-- Toast container -->
   <div class="toast-container" id="toast-container" role="status" aria-live="polite"></div>
-
-  <!-- Vendor libs (local, não CDN) -->
-  <script src="js/vendor/chart.min.js" defer></script>
-  <script src="js/vendor/jspdf.umd.min.js" defer></script>
 
   <!-- App modules -->
   <script type="module">
