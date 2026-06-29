@@ -9,7 +9,7 @@
   <!-- CSP restritiva - whitelist explícita de domínios -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://*.supabase.co;
+    script-src 'self' https://*.supabase.co;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
     connect-src 'self' https://*.supabase.co https://*.cakto.com.br;
@@ -36,11 +36,7 @@
 
   <title>Carregando Ebook...</title>
 
-  <!-- Supabase SDK (opcional - só carrega se configurado) -->
-  <script>
-    window.__EBOOK_CONFIG = null;
-    // Título dinâmico será definido pelo generator.js
-  </script>
+  <!-- Configuração dinâmica será definida no boot do app -->
 </head>
 <body>
   <!-- Skip link para acessibilidade -->
@@ -98,6 +94,9 @@
       <div class="reading-toolbar">
         <button class="btn-icon" id="btn-menu" aria-label="Abrir menu de navegação">
           ☰
+        </button>
+        <button class="btn-icon" id="btn-home" aria-label="Voltar ao início" title="Voltar ao início">
+          🏠
         </button>
         <div class="breadcrumb" id="breadcrumb" aria-label="Localização no ebook">
           <span>Capítulo 1</span>
@@ -246,43 +245,6 @@
   <div class="toast-container" id="toast-container" role="status" aria-live="polite"></div>
 
   <!-- App modules -->
-  <script type="module">
-    import { CONFIG } from './js/config.js';
-
-    async function boot() {
-      try {
-        // Carrega app (que internamente carrega dados do briefing)
-        const app = await import('./js/main-controller.js');
-        await app.init();
-
-        // Atualiza título dinamicamente
-        const titleEl = document.querySelector('title');
-        if (titleEl && titleEl.textContent === 'Carregando Ebook...') {
-          // O app.js atualizará o título após carregar os dados
-        }
-
-        // Carrega Supabase (se configurado)
-        if (CONFIG.isSupabaseEnabled) {
-          const script = document.createElement('script');
-          script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
-          script.onload = async () => {
-            const integrations = await import('./js/integrations.js');
-            await integrations.initIntegrations();
-          };
-          document.head.appendChild(script);
-        }
-      } catch (err) {
-        console.error('[boot] Erro:', err);
-        document.getElementById('content-area').innerHTML = `
-          <div class="error-state">
-            <p>❌ Erro ao carregar o ebook.</p>
-            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:1rem;">${err.message}</p>
-          </div>
-        `;
-      }
-    }
-
-    boot();
-  </script>
+  <script type="module" src="./js/boot.js"></script>
 </body>
 </html>

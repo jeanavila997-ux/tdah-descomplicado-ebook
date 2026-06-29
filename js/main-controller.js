@@ -78,6 +78,13 @@ export async function init() {
   setupGlossary();
   loadProgress();
 
+  if (window.innerWidth >= 1024) {
+    const isCollapsed = localStorage.getItem('tdah-ebook:sidebar-collapsed') === 'true';
+    if (isCollapsed) {
+      $.navDrawer?.classList.add('desktop-collapsed');
+    }
+  }
+
   if (state.totalPages > 0) {
     // Atualiza título da página e branding dinâmico (logo, theme-color, disclaimer)
     const structure = getStructure();
@@ -120,6 +127,7 @@ function cacheDOM() {
     navOverlay: document.getElementById('nav-overlay'),
     navList: document.getElementById('nav-list'),
     btnMenu: document.getElementById('btn-menu'),
+    btnHome: document.getElementById('btn-home'),
     btnClose: document.getElementById('nav-close'),
     btnPrev: document.getElementById('btn-prev'),
     btnNext: document.getElementById('btn-next'),
@@ -648,7 +656,15 @@ function handleFocusBlockNavigation(e) {
 // ==========================================
 function setupEventListeners() {
   // Nav
-  $.btnMenu?.addEventListener('click', openNav);
+  $.btnMenu?.addEventListener('click', () => {
+    if (window.innerWidth >= 1024) {
+      const isCollapsed = $.navDrawer?.classList.toggle('desktop-collapsed');
+      localStorage.setItem('tdah-ebook:sidebar-collapsed', isCollapsed);
+    } else {
+      openNav();
+    }
+  });
+  $.btnHome?.addEventListener('click', () => goToPage(0));
   $.btnClose?.addEventListener('click', closeNav);
   $.navOverlay?.addEventListener('click', closeNav);
 

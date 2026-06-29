@@ -1251,15 +1251,15 @@ textarea::placeholder {
     z-index: 50;
   }
 
+  .nav-drawer.desktop-collapsed {
+    display: none !important;
+  }
+
   .nav-close {
     display: none;
   }
 
   .nav-overlay {
-    display: none;
-  }
-
-  #btn-menu {
     display: none;
   }
 
