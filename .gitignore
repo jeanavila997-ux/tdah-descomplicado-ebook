@@ -33,3 +33,6 @@ supabase/.temp/
 .agents/
 skills-lock.json
 .gemini/
+
+# Git Bundle Backups
+*.bundle

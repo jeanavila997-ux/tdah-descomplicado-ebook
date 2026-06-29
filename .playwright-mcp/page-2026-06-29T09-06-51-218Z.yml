@@ -1,0 +1,40 @@
+- generic [active] [ref=e1]:
+  - link "Pular para conteúdo principal" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner "Aviso médico" [ref=e3]:
+    - generic [ref=e4]: ⚕️
+    - paragraph [ref=e5]: Este conteúdo é educativo e não substitui orientação médica profissional. Sempre converse com seu médico antes de qualquer decisão sobre tratamento.
+  - generic [ref=e6]:
+    - banner [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e9]:
+          - generic [ref=e10]: 🧠
+          - generic [ref=e11]:
+            - text: TDAH
+            - emphasis [ref=e12]: Descomplicado
+        - button "Alternar tema claro/escuro" [ref=e13] [cursor=pointer]:
+          - generic [ref=e14]: ☀️
+      - progressbar "Progresso de leitura" [ref=e15]
+    - navigation "Navegação do ebook" [ref=e16]:
+      - generic [ref=e18]: Sumário
+      - list [ref=e19]
+      - button "📥 Salvar PDF" [ref=e21] [cursor=pointer]
+    - main [ref=e22]:
+      - generic [ref=e23]:
+        - generic "Localização no ebook" [ref=e24]: Capítulo 1
+        - generic [ref=e25]:
+          - button "Leitura Biônica" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]: b
+          - button "Timer de Foco" [ref=e28] [cursor=pointer]: ⏱️
+          - button "Ruído Foco" [ref=e29] [cursor=pointer]: 🌊
+          - button "Modo Hiperfoco" [ref=e30] [cursor=pointer]: ⚡
+          - button "Adicionar marcador" [ref=e31] [cursor=pointer]: 🔖
+          - button "Tamanho do texto" [ref=e32] [cursor=pointer]: Aa
+          - button "Abrir glossário" [ref=e33] [cursor=pointer]: 📖
+      - article [ref=e34]:
+        - paragraph [ref=e37]: Carregando conteúdo…
+      - navigation "Navegação entre páginas" [ref=e38]:
+        - button "Página anterior" [ref=e39] [cursor=pointer]: ← Anterior
+        - generic [ref=e40]: 1 / 32
+        - button "Próxima página" [ref=e41] [cursor=pointer]: Próxima →
+  - status

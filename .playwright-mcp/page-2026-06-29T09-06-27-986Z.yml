@@ -1,0 +1,382 @@
+- generic [active] [ref=e1]:
+  - link "Pular para conteúdo principal" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner "Aviso médico" [ref=e3]:
+    - generic [ref=e4]: ⚕️
+    - paragraph [ref=e5]: Este conteúdo é educativo e não substitui orientação médica ou psicológica profissional. Se a ansiedade dificulta seu dia a dia, procure um profissional de saúde mental.
+  - generic [ref=e6]:
+    - banner [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e9]:
+          - generic [ref=e10]: 🌊
+          - generic [ref=e11]:
+            - text: Ansiedade
+            - emphasis [ref=e12]: Descomplicada
+        - button "Alternar tema claro/escuro" [ref=e13] [cursor=pointer]:
+          - generic [ref=e14]: ☀️
+      - progressbar "Progresso de leitura" [ref=e15]
+    - navigation "Navegação do ebook" [ref=e16]:
+      - generic [ref=e18]:
+        - generic [ref=e19]: S
+        - generic [ref=e20]: u
+        - generic [ref=e21]: m
+        - generic [ref=e22]: á
+        - generic [ref=e23]: r
+        - generic [ref=e24]: i
+        - generic [ref=e25]: o
+      - list [ref=e26]:
+        - listitem [ref=e27]:
+          - generic [ref=e28]:
+            - generic [ref=e29]: Capítulo
+            - generic [ref=e30]: "1:"
+            - generic [ref=e31]: O
+            - generic [ref=e32]: que
+            - generic [ref=e33]: é
+            - generic [ref=e34]: ansiedade?
+          - list [ref=e35]:
+            - listitem [ref=e36]:
+              - button "📑 Capa / Introdução Capa" [ref=e37] [cursor=pointer]:
+                - generic [ref=e38]: 📑
+                - generic "Capa / Introdução":
+                  - generic [ref=e39]: Capa
+                  - generic [ref=e40]: /
+                  - generic [ref=e41]: Introdução
+                - generic [ref=e42]: Capa
+            - listitem [ref=e43]:
+              - 'button "📄 Os principais tipos de ansiedade: 2" [ref=e44] [cursor=pointer]':
+                - generic [ref=e45]: 📄
+                - generic "Os principais tipos de ansiedade:" [ref=e46]:
+                  - generic [ref=e47]: Os
+                  - generic [ref=e48]: principais
+                  - generic [ref=e49]: tipos
+                  - generic [ref=e50]: de
+                  - generic [ref=e51]: "ansiedade:"
+                - generic [ref=e52]: "2"
+            - listitem [ref=e53]:
+              - button "🎯 Quão presente está sua ansiedade? Quiz" [ref=e54] [cursor=pointer]:
+                - generic [ref=e55]: 🎯
+                - generic "Quão presente está sua ansiedade?":
+                  - generic [ref=e56]: Quão
+                  - generic [ref=e57]: presente
+                  - generic [ref=e58]: está
+                  - generic [ref=e59]: sua
+                  - generic [ref=e60]: ansiedade?
+                - generic [ref=e61]: Quiz
+        - listitem [ref=e62]:
+          - generic [ref=e63]:
+            - generic [ref=e64]: Capítulo
+            - generic [ref=e65]: "2:"
+            - generic [ref=e66]: O
+            - generic [ref=e67]: Cérebro
+            - generic [ref=e68]: Ansioso
+          - list [ref=e69]:
+            - listitem [ref=e70]:
+              - button "📑 Capa / Introdução Capa" [ref=e71] [cursor=pointer]:
+                - generic [ref=e72]: 📑
+                - generic "Capa / Introdução":
+                  - generic [ref=e73]: Capa
+                  - generic [ref=e74]: /
+                  - generic [ref=e75]: Introdução
+                - generic [ref=e76]: Capa
+            - listitem [ref=e77]:
+              - 'button "📄 Regiões cerebrais envolvidas: 5" [ref=e78] [cursor=pointer]':
+                - generic [ref=e79]: 📄
+                - generic "Regiões cerebrais envolvidas:" [ref=e80]:
+                  - generic [ref=e81]: Regiões
+                  - generic [ref=e82]: cerebrais
+                  - generic [ref=e83]: "envolvidas:"
+                - generic [ref=e84]: "5"
+        - listitem [ref=e85]:
+          - generic [ref=e86]:
+            - generic [ref=e87]: Capítulo
+            - generic [ref=e88]: "3:"
+            - generic [ref=e89]: Ansiedade
+            - generic [ref=e90]: "no"
+            - generic [ref=e91]: Dia
+            - generic [ref=e92]: a
+            - generic [ref=e93]: Dia
+          - list [ref=e94]:
+            - listitem [ref=e95]:
+              - button "📑 Capa / Introdução Capa" [ref=e96] [cursor=pointer]:
+                - generic [ref=e97]: 📑
+                - generic "Capa / Introdução":
+                  - generic [ref=e98]: Capa
+                  - generic [ref=e99]: /
+                  - generic [ref=e100]: Introdução
+                - generic [ref=e101]: Capa
+            - listitem [ref=e102]:
+              - 'button "📄 Momentos comuns de pico no dia a dia: 7" [ref=e103] [cursor=pointer]':
+                - generic [ref=e104]: 📄
+                - generic "Momentos comuns de pico no dia a dia:" [ref=e105]:
+                  - generic [ref=e106]: Momentos
+                  - generic [ref=e107]: comuns
+                  - generic [ref=e108]: de
+                  - generic [ref=e109]: pico
+                  - generic [ref=e110]: "no"
+                  - generic [ref=e111]: dia
+                  - generic [ref=e112]: a
+                  - generic [ref=e113]: "dia:"
+                - generic [ref=e114]: "7"
+            - listitem [ref=e115]:
+              - button "📄 Ansiedade no Dia a Dia 8" [ref=e116] [cursor=pointer]:
+                - generic [ref=e117]: 📄
+                - generic "Ansiedade no Dia a Dia" [ref=e118]:
+                  - generic [ref=e119]: Ansiedade
+                  - generic [ref=e120]: "no"
+                  - generic [ref=e121]: Dia
+                  - generic [ref=e122]: a
+                  - generic [ref=e123]: Dia
+                - generic [ref=e124]: "8"
+            - listitem [ref=e125]:
+              - button "🎯 Seu Perfil de Ansiedade Quiz" [ref=e126] [cursor=pointer]:
+                - generic [ref=e127]: 🎯
+                - generic "Seu Perfil de Ansiedade":
+                  - generic [ref=e128]: Seu
+                  - generic [ref=e129]: Perfil
+                  - generic [ref=e130]: de
+                  - generic [ref=e131]: Ansiedade
+                - generic [ref=e132]: Quiz
+        - listitem [ref=e133]:
+          - generic [ref=e134]:
+            - generic [ref=e135]: Capítulo
+            - generic [ref=e136]: "4:"
+            - generic [ref=e137]: Respiração,
+            - generic [ref=e138]: Pensamento
+            - generic [ref=e139]: e
+            - generic [ref=e140]: Corpo
+          - list [ref=e141]:
+            - listitem [ref=e142]:
+              - button "📑 Capa / Introdução Capa" [ref=e143] [cursor=pointer]:
+                - generic [ref=e144]: 📑
+                - generic "Capa / Introdução":
+                  - generic [ref=e145]: Capa
+                  - generic [ref=e146]: /
+                  - generic [ref=e147]: Introdução
+                - generic [ref=e148]: Capa
+            - listitem [ref=e149]:
+              - 'button "📄 Respiração 4-7-8: O Freio Natural 11" [ref=e150] [cursor=pointer]':
+                - generic [ref=e151]: 📄
+                - 'generic "Respiração 4-7-8: O Freio Natural" [ref=e152]':
+                  - generic [ref=e153]: Respiração
+                  - generic [ref=e154]: "4-7-8:"
+                  - generic [ref=e155]: O
+                  - generic [ref=e156]: Freio
+                  - generic [ref=e157]: Natural
+                - generic [ref=e158]: "11"
+            - listitem [ref=e159]:
+              - button "📄 Por que 'pensar positivo' não funciona (e o que funciona) 12" [ref=e160] [cursor=pointer]:
+                - generic [ref=e161]: 📄
+                - generic "Por que 'pensar positivo' não funciona (e o que funciona)" [ref=e162]:
+                  - generic [ref=e163]: Por
+                  - generic [ref=e164]: que
+                  - generic [ref=e165]: "'pensar"
+                  - generic [ref=e166]: positivo'
+                  - generic [ref=e167]: não
+                  - generic [ref=e168]: funciona
+                  - generic [ref=e169]: (e
+                  - generic [ref=e170]: o
+                  - generic [ref=e171]: que
+                  - generic [ref=e172]: funciona)
+                - generic [ref=e173]: "12"
+            - listitem [ref=e174]:
+              - 'button "📄 Grounding 5-4-3-2-1: Voltar ao Presente 13" [ref=e175] [cursor=pointer]':
+                - generic [ref=e176]: 📄
+                - 'generic "Grounding 5-4-3-2-1: Voltar ao Presente" [ref=e177]':
+                  - generic [ref=e178]: Grounding
+                  - generic [ref=e179]: "5-4-3-2-1:"
+                  - generic [ref=e180]: Voltar
+                  - generic [ref=e181]: ao
+                  - generic [ref=e182]: Presente
+                - generic [ref=e183]: "13"
+            - listitem [ref=e184]:
+              - button "📄 Descarga Corporal do Pânico 14" [ref=e185] [cursor=pointer]:
+                - generic [ref=e186]: 📄
+                - generic "Descarga Corporal do Pânico" [ref=e187]:
+                  - generic [ref=e188]: Descarga
+                  - generic [ref=e189]: Corporal
+                  - generic [ref=e190]: do
+                  - generic [ref=e191]: Pânico
+                - generic [ref=e192]: "14"
+            - listitem [ref=e193]:
+              - button "📄 Anotação de Preocupação (Worry Time) 15" [ref=e194] [cursor=pointer]:
+                - generic [ref=e195]: 📄
+                - generic "Anotação de Preocupação (Worry Time)" [ref=e196]:
+                  - generic [ref=e197]: Anotação
+                  - generic [ref=e198]: de
+                  - generic [ref=e199]: Preocupação
+                  - generic [ref=e200]: (Worry
+                  - generic [ref=e201]: Time)
+                - generic [ref=e202]: "15"
+            - listitem [ref=e203]:
+              - button "📄 Exposição Gradual ao Medo 16" [ref=e204] [cursor=pointer]:
+                - generic [ref=e205]: 📄
+                - generic "Exposição Gradual ao Medo" [ref=e206]:
+                  - generic [ref=e207]: Exposição
+                  - generic [ref=e208]: Gradual
+                  - generic [ref=e209]: ao
+                  - generic [ref=e210]: Medo
+                - generic [ref=e211]: "16"
+        - listitem [ref=e212]:
+          - generic [ref=e213]:
+            - generic [ref=e214]: Capítulo
+            - generic [ref=e215]: "5:"
+            - generic [ref=e216]: Emoções
+            - generic [ref=e217]: e
+            - generic [ref=e218]: Ansiedade
+          - list [ref=e219]:
+            - listitem [ref=e220]:
+              - button "📑 Capa / Introdução Capa" [ref=e221] [cursor=pointer]:
+                - generic [ref=e222]: 📑
+                - generic "Capa / Introdução":
+                  - generic [ref=e223]: Capa
+                  - generic [ref=e224]: /
+                  - generic [ref=e225]: Introdução
+                - generic [ref=e226]: Capa
+            - listitem [ref=e227]:
+              - 'button "📄 Características comuns: 18" [ref=e228] [cursor=pointer]':
+                - generic [ref=e229]: 📄
+                - generic "Características comuns:" [ref=e230]:
+                  - generic [ref=e231]: Características
+                  - generic [ref=e232]: "comuns:"
+                - generic [ref=e233]: "18"
+            - listitem [ref=e234]:
+              - button "📄 Os Perfis de Enfrentamento do Medo 19" [ref=e235] [cursor=pointer]:
+                - generic [ref=e236]: 📄
+                - generic "Os Perfis de Enfrentamento do Medo" [ref=e237]:
+                  - generic [ref=e238]: Os
+                  - generic [ref=e239]: Perfis
+                  - generic [ref=e240]: de
+                  - generic [ref=e241]: Enfrentamento
+                  - generic [ref=e242]: do
+                  - generic [ref=e243]: Medo
+                - generic [ref=e244]: "19"
+        - listitem [ref=e245]:
+          - generic [ref=e246]:
+            - generic [ref=e247]: Capítulo
+            - generic [ref=e248]: "6:"
+            - generic [ref=e249]: Medicamentos
+            - generic [ref=e250]: para
+            - generic [ref=e251]: Ansiedade
+          - list [ref=e252]:
+            - listitem [ref=e253]:
+              - button "📑 Capa / Introdução Capa" [ref=e254] [cursor=pointer]:
+                - generic [ref=e255]: 📑
+                - generic "Capa / Introdução":
+                  - generic [ref=e256]: Capa
+                  - generic [ref=e257]: /
+                  - generic [ref=e258]: Introdução
+                - generic [ref=e259]: Capa
+            - listitem [ref=e260]:
+              - 'button "📄 Tipos de medicamentos para ansiedade: 21" [ref=e261] [cursor=pointer]':
+                - generic [ref=e262]: 📄
+                - generic "Tipos de medicamentos para ansiedade:" [ref=e263]:
+                  - generic [ref=e264]: Tipos
+                  - generic [ref=e265]: de
+                  - generic [ref=e266]: medicamentos
+                  - generic [ref=e267]: para
+                  - generic [ref=e268]: "ansiedade:"
+                - generic [ref=e269]: "21"
+            - listitem [ref=e270]:
+              - 'button "📄 Mitos comuns: 22" [ref=e271] [cursor=pointer]':
+                - generic [ref=e272]: 📄
+                - generic "Mitos comuns:" [ref=e273]:
+                  - generic [ref=e274]: Mitos
+                  - generic [ref=e275]: "comuns:"
+                - generic [ref=e276]: "22"
+        - listitem [ref=e277]:
+          - generic [ref=e278]:
+            - generic [ref=e279]: Capítulo
+            - generic [ref=e280]: "7:"
+            - generic [ref=e281]: Sistema
+            - generic [ref=e282]: Anti-Ansiedade
+          - list [ref=e283]:
+            - listitem [ref=e284]:
+              - button "📑 Capa / Introdução Capa" [ref=e285] [cursor=pointer]:
+                - generic [ref=e286]: 📑
+                - generic "Capa / Introdução":
+                  - generic [ref=e287]: Capa
+                  - generic [ref=e288]: /
+                  - generic [ref=e289]: Introdução
+                - generic [ref=e290]: Capa
+            - listitem [ref=e291]:
+              - 'button "📄 🗂️ Sistema Anti-Ansiedade: 24" [ref=e292] [cursor=pointer]':
+                - generic [ref=e293]: 📄
+                - generic "🗂️ Sistema Anti-Ansiedade:" [ref=e294]:
+                  - generic [ref=e295]: 🗂️
+                  - generic [ref=e296]: Sistema
+                  - generic [ref=e297]: "Anti-Ansiedade:"
+                - generic [ref=e298]: "24"
+            - listitem [ref=e299]:
+              - button "📄 Plano de 7 Dias para Recalibrar 25" [ref=e300] [cursor=pointer]:
+                - generic [ref=e301]: 📄
+                - generic "Plano de 7 Dias para Recalibrar" [ref=e302]:
+                  - generic [ref=e303]: Plano
+                  - generic [ref=e304]: de
+                  - generic [ref=e305]: "7"
+                  - generic [ref=e306]: Dias
+                  - generic [ref=e307]: para
+                  - generic [ref=e308]: Recalibrar
+                - generic [ref=e309]: "25"
+            - listitem [ref=e310]:
+              - button "🎯 Qual Técnica é Ideal para Você? Quiz" [ref=e311] [cursor=pointer]:
+                - generic [ref=e312]: 🎯
+                - generic "Qual Técnica é Ideal para Você?":
+                  - generic [ref=e313]: Qual
+                  - generic [ref=e314]: Técnica
+                  - generic [ref=e315]: é
+                  - generic [ref=e316]: Ideal
+                  - generic [ref=e317]: para
+                  - generic [ref=e318]: Você?
+                - generic [ref=e319]: Quiz
+        - listitem [ref=e320]:
+          - generic [ref=e321]:
+            - generic [ref=e322]: Capítulo
+            - generic [ref=e323]: "8:"
+            - generic [ref=e324]: "Neuroplasticidade:"
+            - generic [ref=e325]: Recalibrando
+            - generic [ref=e326]: o
+            - generic [ref=e327]: Alarme
+          - list [ref=e328]:
+            - listitem [ref=e329]:
+              - button "📑 Capa / Introdução Capa" [ref=e330] [cursor=pointer]:
+                - generic [ref=e331]: 📑
+                - generic "Capa / Introdução":
+                  - generic [ref=e332]: Capa
+                  - generic [ref=e333]: /
+                  - generic [ref=e334]: Introdução
+                - generic [ref=e335]: Capa
+            - listitem [ref=e336]:
+              - 'button "📄 Como fortalecer a sensação de segurança: 28" [ref=e337] [cursor=pointer]':
+                - generic [ref=e338]: 📄
+                - generic "Como fortalecer a sensação de segurança:" [ref=e339]:
+                  - generic [ref=e340]: Como
+                  - generic [ref=e341]: fortalecer
+                  - generic [ref=e342]: a
+                  - generic [ref=e343]: sensação
+                  - generic [ref=e344]: de
+                  - generic [ref=e345]: "segurança:"
+                - generic [ref=e346]: "28"
+      - button "📥 Salvar PDF" [ref=e348] [cursor=pointer]
+    - main [ref=e349]:
+      - generic [ref=e350]:
+        - generic "Localização no ebook" [ref=e351]: Capítulo 1›O que é ansiedade?
+        - generic [ref=e352]:
+          - button "Leitura Biônica" [ref=e353] [cursor=pointer]:
+            - generic [ref=e354]: b
+          - button "Timer de Foco" [ref=e355] [cursor=pointer]: ⏱️
+          - button "Ruído Foco" [ref=e356] [cursor=pointer]: 🌊
+          - button "Modo Hiperfoco" [ref=e357] [cursor=pointer]: ⚡
+          - button "Adicionar marcador" [ref=e358] [cursor=pointer]: 🔖
+          - button "Tamanho do texto" [ref=e359] [cursor=pointer]: Aa
+          - button "Abrir glossário" [ref=e360] [cursor=pointer]: 📖
+      - article [ref=e361]:
+        - generic [ref=e362]:
+          - generic [ref=e363]: 🌊
+          - generic [ref=e364]: O que é ansiedade?
+          - heading "Compreendendo o Alarme Interno do Corpo" [level=1] [ref=e365]
+          - button "Começar Capítulo →" [ref=e366] [cursor=pointer]
+      - navigation "Navegação entre páginas" [ref=e367]:
+        - button "Página anterior" [disabled] [ref=e368]: ← Anterior
+        - generic [ref=e369]: 1 / 28
+        - button "Próxima página" [ref=e370] [cursor=pointer]: Próxima →
+  - status

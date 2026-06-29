@@ -114,21 +114,6 @@
     </main>
   </div>
 
-  <script type="module">
-    import { getInitialTheme, setTheme } from './js/config.js';
-
-    // Inicializa tema
-    setTheme(getInitialTheme());
-
-    // Accordion
-    document.querySelectorAll('.accordion-trigger').forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-        trigger.setAttribute('aria-expanded', !isExpanded);
-        const panel = trigger.nextElementSibling;
-        panel.classList.toggle('open', !isExpanded);
-      });
-    });
-  </script>
+  <script type="module" src="./js/suporte-boot.js"></script>
 </body>
 </html>

@@ -80,7 +80,7 @@ export const CONFIG = {
   appName: 'TDAH Descomplicado',
 
   // Versão (deve bater com service-worker.js CACHE_NAME)
-  version: '1.2.0',
+  version: '1.2.1',
 
   // Supabase
   supabase: SUPABASE_CONFIG,
