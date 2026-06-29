@@ -1,9 +1,9 @@
 /**
  * Service Worker — TDAH Descomplicado Ebook PWA
- * Versão v1.1.0 — Cache-First para recursos estáticos essenciais (Offline-capable)
+ * Versão v1.2.0 — Cache-First para recursos estáticos essenciais (Offline-capable)
  */
 
-const CACHE_NAME = 'tdah-ebook-v1.1.0';
+const CACHE_NAME = 'tdah-ebook-v1.2.0';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -20,6 +20,7 @@ const ASSETS_TO_CACHE = [
   './js/main-controller.js',
   './js/integrations.js',
   './briefings/briefing.json',
+  './briefings/ansiedade.json',
   './js/vendor/jspdf.umd.min.js',
   './assets/icons/icon-72x72.png',
   './assets/icons/icon-96x96.png',

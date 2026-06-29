@@ -79,11 +79,12 @@ export async function init() {
   loadProgress();
 
   if (state.totalPages > 0) {
-    // Atualiza título da página
+    // Atualiza título da página e branding dinâmico (logo, theme-color, disclaimer)
     const structure = getStructure();
     if (structure?.title) {
       document.title = `${structure.title} — Ebook Interativo`;
     }
+    applyBranding(structure);
     renderPage(state.currentPage);
     setupAccordion();
   } else {
@@ -135,8 +136,53 @@ function cacheDOM() {
     themeToggle: document.getElementById('theme-toggle'),
     glossaryModal: document.getElementById('glossary-modal'),
     quizModal: document.getElementById('quiz-modal'),
-    toastContainer: document.getElementById('toast-container')
+    toastContainer: document.getElementById('toast-container'),
+    logoIcon: document.querySelector('.logo-icon'),
+    logoText: document.querySelector('.logo-text'),
+    themeColorMeta: document.querySelector('meta[name="theme-color"]'),
+    disclaimerText: document.getElementById('disclaimer-text'),
+    disclaimerIcon: document.querySelector('.disclaimer-icon')
   };
+}
+
+// ==========================================
+// BRANDING DINÂMICO (multi-ebook)
+// ==========================================
+// Aplica identidade visual do ebook ativo (logo, theme-color, disclaimer)
+// a partir de structure.capa / structure.ebook. Mantém o fallback estático
+// do index.html quando o briefing não expõe esses campos.
+function applyBranding(structure) {
+  if (!structure) return;
+  const capa = structure.capa || {};
+  const ebook = structure.ebook || {};
+
+  // Logo: titulo_principal é dividido em duas partes; a última palavra
+  // recebe o estilo <em> (mesma estrutura do HTML estático "TDAH <em>Descomplicado</em>").
+  if ($.logoText && capa.titulo_principal) {
+    const parts = String(capa.titulo_principal).trim().split(/\s+/);
+    if (parts.length >= 2) {
+      const last = parts.pop();
+      $.logoText.innerHTML = `${parts.join(' ')} <em>${last}</em>`;
+    } else {
+      $.logoText.textContent = capa.titulo_principal;
+    }
+  }
+  if ($.logoIcon && capa.icone) {
+    $.logoIcon.textContent = capa.icone;
+  }
+
+  // theme-color: usa a cor primária do briefing quando disponível.
+  if ($.themeColorMeta && capa.cores?.primaria) {
+    $.themeColorMeta.setAttribute('content', capa.cores.primaria);
+  }
+
+  // Disclaimer: texto e ícone (opcional) específicos do ebook.
+  if ($.disclaimerText && ebook.disclaimer_texto) {
+    $.disclaimerText.textContent = ebook.disclaimer_texto;
+  }
+  if ($.disclaimerIcon && ebook.disclaimer_icone) {
+    $.disclaimerIcon.textContent = ebook.disclaimer_icone;
+  }
 }
 
 // ==========================================
