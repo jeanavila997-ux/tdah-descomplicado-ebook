@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fdfdfd">
+  <meta name="description" content="Central de suporte do TDAH Descomplicado. Tire dúvidas, solicite reembolso ou fale com nosso time.">
+
+  <!-- CSP restritiva -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self';
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' data:;
+  ">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <title>Suporte — TDAH Descomplicado</title>
+</head>
+<body>
+  <!-- Disclaimer médico persistente -->
+  <div class="disclaimer-bar" role="banner" aria-label="Aviso médico">
+    <span class="disclaimer-icon">⚕️</span>
+    <p>Este conteúdo é educativo e não substitui orientação médica profissional.</p>
+  </div>
+
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-brand">
+        <div class="logo">
+          <span class="logo-icon">🧠</span>
+          <span class="logo-text">TDAH <em>Descomplicado</em></span>
+        </div>
+        <a href="index.html" class="btn btn-outline btn-small">← Voltar ao ebook</a>
+      </div>
+    </header>
+
+    <main class="main-content" style="max-width:720px;margin:0 auto;">
+      <article style="padding:var(--space-8) var(--space-4);">
+        <div class="cover-page" style="padding:var(--space-10) 0;">
+          <div style="font-size:3rem;margin-bottom:var(--space-4);">🛟</div>
+          <h1 class="chapter-title" style="text-align:center;">Central de Suporte</h1>
+          <p class="chapter-subtitle" style="text-align:center;border:none;">
+            Tire dúvidas, solicite reembolso ou fale diretamente com nosso time.
+          </p>
+        </div>
+
+        <div class="content-body">
+          <div class="highlight-box">
+            <div class="highlight-title">✉️ Email de suporte</div>
+            <p style="font-size:var(--text-lg);margin-bottom:0;">
+              <strong><a href="mailto:bookflow@ebooksaude.shop" style="color:var(--color-primary);">bookflow@ebooksaude.shop</a></strong>
+            </p>
+          </div>
+
+          <h3>Garantia Sem Atrito</h3>
+          <p>
+            Você tem <strong>7 dias de garantia</strong> para testar o TDAH Descomplicado. Se sentir que o método não se encaixa na sua rotina, ou simplesmente esquecer que comprou e quiser devolver, basta nos enviar um email de linha única.
+          </p>
+          <p>Devolvemos 100% do seu dinheiro. Sem ressentimentos, sem burocracia.</p>
+
+          <h3>Perguntas Frequentes</h3>
+
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>📧 Em quanto tempo recebo resposta?</span>
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div class="accordion-panel">
+                <p>Respondemos em até 24 horas úteis.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>💳 Como funciona o reembolso?</span>
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div class="accordion-panel">
+                <p>Envie um email para bookflow@ebooksaude.shop com o assunto "Reembolso" e o email usado na compra. Processamos em até 7 dias úteis, conforme regras da Cakto.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>🔐 Esqueci minha senha</span>
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div class="accordion-panel">
+                <p>Na tela de login, use a aba "Magic Link" para receber um link de acesso no seu email. Se tiver problemas, fale conosco pelo email de suporte.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-section" style="margin-top:var(--space-12);">
+            <div class="cta-title">Ainda com dúvidas?</div>
+            <p style="color:var(--text-secondary);margin-bottom:var(--space-6);">
+              Nosso time está pronto para ajudar você a aproveitar o kit completo.
+            </p>
+            <a href="mailto:bookflow@ebooksaude.shop" class="btn btn-primary btn-large">
+              Falar com Suporte →
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <script type="module">
+    import { getInitialTheme, setTheme } from './js/config.js';
+
+    // Inicializa tema
+    setTheme(getInitialTheme());
+
+    // Accordion
+    document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        trigger.setAttribute('aria-expanded', !isExpanded);
+        const panel = trigger.nextElementSibling;
+        panel.classList.toggle('open', !isExpanded);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -28,6 +28,7 @@ const essentialFiles = [
   'index.html',
   'login.html',
   'privacidade.html',
+  'suporte.html',
   'manifest.json',
   'service-worker.js',
   'js/config.js',

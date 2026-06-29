@@ -1,0 +1,378 @@
+{
+  "_template": "PROMPT_MESTRE v1.0 — Template Universal de eBook PWA",
+  "_instrucoes": "Segundo ebook do mesmo shell. Carregue via ?briefing=ansiedade. Não altera briefings/briefing.json.",
+
+  "ebook": {
+    "tema": "Ansiedade Descomplicada",
+    "nicho": "Saúde mental baseada em evidências para mentes ansiosas",
+    "publico_alvo": "Adultos que vivem com ansiedade crônica, ataques de pânico ou preocupação constante e querem entender o que acontece no próprio corpo sem culpa nem medo",
+    "problema_principal": "A ansiedade é tratada como fraqueza ou 'frescura', gerando culpa, isolamento e um ciclo de medo que se alimenta de si mesmo",
+    "objetivo": "Explicar a ansiedade pelo viés neurobiológico e entregar ferramentas corporais, cognitivas e de estilo de vida para desarmar o alarme interno",
+    "transformacao_prometida": "O leitor vai entender de onde vem sua ansiedade, parar de se culpar pelo que sente e ter um kit prático de respiração, pensamento e rotina para voltar ao presente",
+    "nivel_conteudo": "Iniciante",
+    "tom_de_linguagem": "Direto, acolhedor, sem catastrofizar, focado em voltar ao corpo e ao agora",
+    "num_capitulos": 8,
+    "num_paginas_estimado": "25-40",
+    "monetizacao": "Isca digital + venda do kit completo",
+    "cta_final": "Garantir acesso vitalício ao kit Ansiedade Descomplicada",
+    "plataforma_venda": "Cakto",
+    "formato_entrega": "PWA interativo + PDF + modelos prontos",
+    "disclaimer_medico": true,
+    "disclaimer_texto": "Este conteúdo é educativo e não substitui orientação médica ou psicológica profissional. Se a ansiedade dificulta seu dia a dia, procure um profissional de saúde mental.",
+    "preco_brl": 47.00,
+    "preco_original_brl": 97.00
+  },
+
+  "capa": {
+    "titulo_principal": "Ansiedade Descomplicada",
+    "subtitulo": "Entenda Seu Alarme Interno, Desarme a Preocupação e Volte ao Presente",
+    "icone": "🌊",
+    "cores": {
+      "primaria": "#6366f1",
+      "secundaria": "#8b5cf6",
+      "fundo": "#1e1b4b",
+      "fundo_claro": "#f5f3ff",
+      "texto": "#f5f3ff",
+      "texto_claro": "#1e1b4b"
+    },
+    "estilo_visual": "Calmo, sereno, com gradientes índigo-lavanda. Tipografia serif para títulos (Playfair Display) e sans-serif para corpo (Inter).",
+    "sensacao": "Tranquila e segura. O leitor deve sentir que a ansiedade tem explicação — e que há saída.",
+    "frase_impacto": "A ansiedade não é um defeito seu. É um alarme desregulado — e alarmes se recalibram."
+  },
+
+  "posicionamento": {
+    "para_quem": "Adultos que convivem com ansiedade, preocupação excessiva ou pânico e não entendem por que o corpo reage antes da mente",
+    "problema_resolvido": "A falta de compreensão do mecanismo da ansiedade e a ausência de ferramentas práticas para usar no momento do pico",
+    "transformacao": "De assustado e refém do próprio corpo para informado, com técnicas de respiração, pensamento e rotina para voltar ao presente",
+    "objecao_principal": "'Já tentei respirar fundo e não funciona — minha ansiedade é diferente'",
+    "diferencial": "Conteúdo baseado em neurociência da ansiedade, sem catastrofizar, com técnicas testadas (respiração, grounding, reestruturação cognitiva) explicadas passo a passo",
+    "uso_comercial": "Isca digital para captura de leads (WhatsApp/email) e produto de baixo custo para venda direta"
+  },
+
+  "estrutura_capitulos": [
+    {
+      "numero": 1,
+      "titulo": "O que é ansiedade?",
+      "subtitulo": "Compreendendo o Alarme Interno do Corpo",
+      "icone": "🌊",
+      "tipo": "introducao",
+      "conteudo": {
+        "_prosa": {
+          "intro_prevalencia": "A ansiedade é uma das condições de saúde mental mais comuns do mundo — atingindo cerca de <strong>1 a cada 4 adultos</strong> em algum momento da vida. No Brasil, milhões convivem com preocupação crônica sem nunca receberem ajuda.",
+          "intro_tipos_titulo": "Os principais tipos de ansiedade:",
+          "intro_diagnostico_titulo": "Por que entender a própria ansiedade importa?",
+          "intro_diagnostico_corpo": "Muitas pessoas vivem anos achando que são 'nervosas', 'frágeis' ou que 'exageram'. Carregam culpa por reagirem a coisas que parecem pequenas para os outros — quando, na verdade, seu sistema de alarme interno está simplesmente desregulado.",
+          "intro_narrativa_corpo": "Em vez de 'eu sou exagerado e fraco', você passa a pensar 'meu cérebro está disparando um alarme antigo — e existem formas de desarmá-lo'.",
+          "intro_aviso_titulo": "O diagnóstico deve ser feito por um profissional",
+          "intro_aviso_corpo": "Psiquiatras e psicólogos qualificados são os profissionais aptos a avaliar transtornos de ansiedade. Questionários online servem como <strong>autoavaliação inicial</strong>, mas não substituem a avaliação clínica."
+        },
+        "definicao": "A ansiedade é uma resposta natural do corpo a ameaças percebidas — um estado de alerta que prepara o organismo para agir. Ela se torna um problema quando o alarme dispara sem perigo real, fica ligado tempo demais, ou aparece com intensidade desproporcional à situação.",
+        "prevalencia": "1 a cada 4 adultos em algum momento da vida",
+        "tipos": [
+          { "nome": "Ansiedade Generalizada (TAG)", "descricao": "Preocupação constante e difícil de controlar sobre várias áreas da vida — dinheiro, saúde, trabalho, futuro. A mente não desliga." },
+          { "nome": "Transtorno do Pânico", "descricao": "Ataques súbitos de medo intenso com sintomas físicos (coração acelerado, falta de ar, formigamento). Aparece de aparente nada." },
+          { "nome": "Ansiedade Social", "descricao": "Medo intenso de ser julgado, observado ou humilhado em situações sociais. Evitar torna a vida pequena." }
+        ],
+        "destaques": [
+          "A ansiedade não é 'frescura'. É uma das condições de saúde mental mais estudadas, com treatments eficazes documentados em décadas de pesquisa.",
+          "O cérebro ansioso não está quebrado — está hiperpreparado. O mesmo sistema que nos mantém vivos em perigo real fica ligado demais quando não há ameaça.",
+          "Mulheres têm cerca de duas vezes mais chance de desenvolver transtornos de ansiedade do que homens — uma combinação de fatores hormonais, sociais e de pressão dupla (trabalho + cuidado)."
+        ],
+        "has_quiz": true,
+        "quiz_titulo": "Quão presente está sua ansiedade?",
+        "quiz_perguntas": [
+          { "texto": "Com que frequência você se sente inquieto, à beira de um colapso, sem conseguir relaxar?", "tipo": "likert" },
+          { "texto": "Sua mente costuma antecipar cenários catastróficos ('e se der errado...')?", "tipo": "likert" },
+          { "texto": "Você sente sintomas físicos de ansiedade (coração acelerado, aperto no peito, falta de ar)?", "tipo": "likert" },
+          { "texto": "A preocupação interfere no seu sono ou no seu apetite?", "tipo": "likert" },
+          { "texto": "Você evita situações por medo de ter ansiedade ou pânico nelas?", "tipo": "likert" },
+          { "texto": "Pequenos imprevistos parecem desproporcionalmente ameaçadores?", "tipo": "likert" },
+          { "texto": "Você sente dificuldade de concentração por causa da ruminação mental?", "tipo": "likert" }
+        ]
+      }
+    },
+    {
+      "numero": 2,
+      "titulo": "O Cérebro Ansioso",
+      "subtitulo": "Amígdala, Eixo HPA e a Química do Medo",
+      "icone": "⚡",
+      "tipo": "fundamentos",
+      "conteudo": {
+        "_prosa": {
+          "fund_intro": "A ansiedade não é 'falta de controle emocional'. É uma <strong>resposta neurobiológica</strong> com circuitos bem mapeados no cérebro. A neuroimagem mostra quais estruturas disparam demais — e por quê.",
+          "fund_regioes_titulo": "Regiões cerebrais envolvidas:",
+          "fund_molecula_titulo": "Cortisol: O Hormônio do Alarme",
+          "fund_molecula_corpo": "O <strong>cortisol</strong> é o hormônio central da ansiedade crônica. Ele não é o vilão — é o combustível que mantém o corpo em estado de alerta. Em níveis crônicos, ele próprio alimenta o ciclo da preocupação.",
+          "fund_urgencia_titulo": "Por que o corpo reage antes da mente?",
+          "fund_urgencia_corpo": "A amígdala processa ameaças em milissegundos — bem antes do córtex racional perceber o que está acontecendo. É por isso que o coração dispara <strong>antes</strong> de você entender o motivo. O corpo sente; a mente explica depois.",
+          "fund_neuro_titulo": "Neurotransmissores e hormônios envolvidos:",
+          "fund_neuro_col1": "Molécula",
+          "fund_neuro_col3": "Na ansiedade",
+          "fund_medic_titulo": "Como os tratamentos ajudam",
+          "fund_medic_corpo": "Antidepressivos (SSRIs) aumentam a disponibilidade de serotonina na fenda sináptica, ajudando o cérebro a reequilibrar o sistema de alarme. É análogo a reajustar a sensibilidade de um detector de fumaça que dispara demais."
+        },
+        "regioes_cerebrais": [
+          { "nome": "Amígdala", "emoji": "🔔", "funcao": "O alarme do cérebro. Detecta ameaças e dispara a resposta de medo antes mesmo de você pensar. Em pessoas com ansiedade, está hipersensível — reage a estímulos que outros ignoram." },
+          { "nome": "Hipocampo", "emoji": "💾", "funcao": "Guarda as memórias de medo. Se uma situação foi ameaçadora no passado, ele sinaliza à amígdala para reagir de novo. Memórias ansiosas se sobrepõem às neutras." },
+          { "nome": "Córtex Pré-frontal", "emoji": "🎯", "funcao": "O 'freio' racional que avalia se a ameaça é real. Na ansiedade crônica, sua conexão com a amígdala fica enfraquecida — o alarme grita mais alto que a razão." }
+        ],
+        "neurotransmissores": [
+          { "nome": "GABA", "funcao": "Inibição, freio neural, calma", "no_tdah": "Reduzido — o sistema de 'freio' fica fraco, o alarme se mantém" },
+          { "nome": "Serotonina", "funcao": "Humor, regulação do medo, sono", "no_tdah": "Disponibilidade alterada, dificulta o 'desarme' da ansiedade" },
+          { "nome": "Noradrenalina", "funcao": "Alerta, ativação corporal", "no_tdah": "Elevada — mantém o corpo em estado de luta-fuga" },
+          { "nome": "Cortisol", "funcao": "Hormônio do estresse prolongado", "no_tdah": "Cronicamente alto, retroalimenta a ansiedade" }
+        ],
+        "has_tabela": true
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "Ansiedade no Dia a Dia",
+      "subtitulo": "Como o Alarme Aparece na Rotina e o Que Fazer",
+      "icone": "📅",
+      "tipo": "pratica",
+      "conteudo": {
+        "_prosa": {
+          "prat_intro": "Para quem vive com ansiedade, o cotidiano pode ser um campo minado invisível. As reações não são exagero — são resultado de um sistema de alerta que dispara onde outros percebem tranquilidade.",
+          "prat_agora_titulo": "A 'catastrofização automática'",
+          "prat_agora_corpo": "A mente ansiosa vive projetando cenários: 'e se der errado?', 'e se eu passar mal lá?'. Cada <strong>'e se'</strong> é um micro-alarme que mantém o corpo em estado de luta-fuga — mesmo sentado no sofá.",
+          "prat_timeline_titulo": "Momentos comuns de pico no dia a dia:",
+          "prat_invisiveis_intro": "A ansiedade tem faces <strong>invisíveis</strong> — aquelas que ninguém percebe, mas que drenam energia e constroem um cansaço crônico:"
+        },
+        "timeline_dia": [
+          { "hora": "Manhã", "titulo": "O Despertar Acelerado", "descricao": "O cortisol naturalmente sobe ao acordar. No cérebro ansioso, esse pico vira 'despertar em pânico': a mente já chega ao dia antecipando problemas antes mesmo de abrir os olhos." },
+          { "hora": "Trabalho", "titulo": "O Alarme de E-mail", "descricao": "Uma mensagem inesperada, uma reunião marcada, um feedback — cada estímulo vira ameaça potencial. O coração acelera, o pensamento fica rápido e confuso. Concentrar-se fica difícil." },
+          { "hora": "Tarde", "titulo": "A Fadiga da Vigilância", "descricao": "Manter-se alerta o dia inteiro esgota. Sobe uma irritabilidade, uma sensação de 'não aguento mais'. É o sistema nervoso pedindo ar — não preguiça." },
+          { "hora": "Noite", "titulo": "A Mente que Não Desliga", "descricao": "Quando o mundo para, a ansiedade acelera. Replay do dia, antecipação do amanhã, ruminação. O corpo está cansado, mas o cérebro não consegue desligar para dormir." }
+        ],
+        "sintomas_invisiveis": [
+          { "titulo": "Hipervigilância", "emoji": "🔍", "descricao": "Escanear o ambiente o tempo todo por ameaças. Notar mudanças de tom de voz, expressões, ruídos. Viver com o radar sempre ligado é exaustivo." },
+          { "titulo": "Catastrofização", "emoji": "🌪️", "descricao": "A mente pula do menor indício ao pior cenário. 'Uma dor = doença grave', 'uma mensagem não respondida = me odeiam'. É o cérebro preenchendo lacunas com medo." },
+          { "titulo": "Evitação Silenciosa", "emoji": "🚪", "descricao": "Recusar convites, adiar ligações, escolher rotas 'seguras'. A vida vai ficando menor sem que ninguém — nem você — perceba. Evitar alivia no momento e fortalece o medo." },
+          { "titulo": "Tensão Muscular Crônica", "emoji": "🪨", "descricao": "Mandíbula cerrada, ombros nas orelhas, aperto no peito. O corpo está em posição de defesa o dia inteiro sem você notar. Aparece como dor e cansaço." },
+          { "titulo": "Cansaço Mental Profundo", "emoji": "🔋", "descricao": "Estar sempre alerta custa energia real. Ao final do dia, o esgotamento não é físico — é o sistema nervoso pedindo descanso de um alarme que nunca para." }
+        ],
+        "has_quiz": true,
+        "quiz_titulo": "Seu Perfil de Ansiedade"
+      }
+    },
+    {
+      "numero": 4,
+      "titulo": "Respiração, Pensamento e Corpo",
+      "subtitulo": "Técnicas Práticas para Desarmar o Alarme",
+      "icone": "🎯",
+      "tipo": "solucoes",
+      "conteudo": {
+        "topicos": [
+          {
+            "titulo": "Respiração 4-7-8: O Freio Natural",
+            "texto": "Quando a ansiedade sobe, a respiração fica curta e rápida — o que alimenta o pânico. Inverter isso ativa o nervo vago e sinaliza ao cérebro: 'está seguro'.",
+            "passos": ["Inspire pelo nariz por 4 segundos", "Segure o ar por 7 segundos", "Solte pela boca, lentamente, por 8 segundos", "Repita 4 ciclos", "Use sempre que o corpo acelerar — antes de reuniões, ao deitar, no trânsito"]
+          },
+          {
+            "titulo": "Por que 'pensar positivo' não funciona (e o que funciona)",
+            "lista": [
+              "A mente ansiosa rejeita afirmações otimistas ('é só relaxar') porque o corpo está em alerta real",
+              "O que funciona: questionar o pensamento catastrófico, não negá-lo",
+              "Pergunte: 'Qual a evidência? Qual a probabilidade real? E se der errado, qual o plano?'",
+              "Substituir 'e se' por 'então eu...' — do medo à ação",
+              "Nomear a emoção ('isto é ansiedade, não perigo') já reduz sua intensidade"
+            ]
+          },
+          {
+            "titulo": "Grounding 5-4-3-2-1: Voltar ao Presente",
+            "texto": "A ansiedade é o corpo no futuro (catastrofização). O grounding arrasta a atenção de volta ao agora usando os sentidos.",
+            "destaque": "A ansiedade vive no 'e se amanhã'. O presente é o único lugar onde o alarme realmente desarma.",
+            "passos": ["5 coisas que você VÊ ao redor", "4 coisas que você TOCA", "3 coisas que você OUVE", "2 coisas que você CHEIRA", "1 coisa que você SABOREIA"]
+          },
+          {
+            "titulo": "Descarga Corporal do Pânico",
+            "texto": "Um ataque de pânico inunda o corpo de adrenalina. Ficar parado tentando 'se acalmar' raramente funciona — o combustível precisa ser gasto. Movimento leve ajuda a completar o ciclo.",
+            "passos": ["Caminhe por 2-3 minutos em passo rápido", "Agache 10 vezes (se puder)", "Balance braços e pernas por 1 minuto", "Respire fundo ao final para sinalizar o desarme"]
+          },
+          {
+            "titulo": "Anotação de Preocupação (Worry Time)",
+            "texto": "Em vez de brigar com a preocupação o dia todo, agende um tempo e espaço para ela. A mente ansiosa aceita 'depois' melhor do que 'nunca'.",
+            "passos": ["Reserve 15 minutos por dia (ex: 18h) só para preocupar", "Anote tudo em uma lista — sem filtro", "Quando a ansiedade vier fora da hora, diga: 'anotei, vejo às 18h'", "No horário, revise: o que ainda é real? O que virou ação?"]
+          },
+          {
+            "titulo": "Exposição Gradual ao Medo",
+            "texto": "Evitar alivia no momento e fortalece o medo a longo prazo. A exposição gradual — em pequenos degraus — ensina à amígdala que o perigo não é real.",
+            "destaque": "A regra dos 2 minutos: se uma tarefa que você evita por ansiedade leva menos de 2 minutos, faça agora. Cada vez que você enfrenta, o alarme fica um pouco mais calibrado."
+          }
+        ]
+      }
+    },
+    {
+      "numero": 5,
+      "titulo": "Emoções e Ansiedade",
+      "subtitulo": "A Relação com o Medo, a Culpa e o Controle",
+      "icone": "💜",
+      "tipo": "emocional",
+      "conteudo": {
+        "_prosa": {
+          "emo_intro": "A ansiedade não é só um sintoma físico — ela tem um núcleo <strong>emocional</strong>. Por trás do coração acelerado costuma haver uma relação complicada com incerteza, controle e a própria sensibilidade.",
+          "emo_destaque_titulo": "O que é a intolerância à incerteza?",
+          "emo_estatistica_intro": "Pesquisas mostram que até",
+          "emo_caracteristicas_titulo": "Características comuns:",
+          "emo_citacao": "\"A ansiedade é o preço que a mente cobra por tentar prever um futuro que ela não controla.\"",
+          "emo_citacao_autor": "— Adaptado de estudos sobre intolerância à incerteza",
+          "emo_rsd_titulo": "Os Perfis de Enfrentamento do Medo",
+          "emo_estrategias_titulo": "Estratégias para a relação emocional com a ansiedade"
+        },
+        "topico_principal": "Intolerância à incerteza: a dificuldade de suportar o 'não sei'. Para a mente ansiosa, ambiguidade não é neutra — é perigo. O cérebro preenche o vazio com o pior cenário possível, mesmo sem evidência.",
+        "estatistica": "80% das pessoas com ansiedade generalizada apresentam intolerância à incerteza significativa.",
+        "caracteristicas": [
+          "Necessidade de controle: planejar excessivamente para 'garantir' que nada dê errado",
+          "Dificuldade de decisão: cada escolha parece ter consequências irreversíveis",
+          "Ruminação: pensar e repensar o mesmo sem chegar a lugar nenhum",
+          "Culpa ansiosa: 'eu devia ter previsto/prevenido isso'",
+          "Sensação de responsabilidade excessiva por coisas fora do seu controle"
+        ],
+        "cards_rsd": [
+          { "titulo": "Perfil Controlador", "emoji": "📋", "descricao": "Tenta prever e planejar cada detalhe para se sentir seguro. Quando algo foge do plano, a ansiedade dispara. O controle é a muleta contra a incerteza." },
+          { "titulo": "Perfil Evitador", "emoji": "🙈", "descricao": "Recua de tudo que possa trazer ansiedade — conversas, decisões, lugares. A vida encolhe em nome do 'conforto', mas o medo cresce silenciosamente." },
+          { "titulo": "Perfil Catastrofizador", "emoji": "🌪️", "descricao": "A mente salta automaticamente ao pior cenário. Não é pessimismo — é o cérebro tentando 'se preparar' antecipando o desastre. Mas o desastre quase nunca vem." }
+        ],
+        "estrategias_rsd": [
+          "Terapia: TCC (Terapia Cognitivo-Comportamental) é o tratamento com maior evidência para ansiedade",
+          "ACT: aceitar a incerteza sem brigar com ela, em vez de tentar eliminá-la",
+          "Mindfulness: observar o pensamento ansioso sem virar refém dele",
+          "Medicamentos: SSRIs, com acompanhamento médico, para ansiedade persistente",
+          "Psicoeducação: entender o mecanismo reduz a culpa ('é meu cérebro, não meu defeito')",
+          "Autocompaixão: tratar-se como trataria um amigo passando pelo mesmo"
+        ]
+      }
+    },
+    {
+      "numero": 6,
+      "titulo": "Medicamentos para Ansiedade",
+      "subtitulo": "Antidepressivos, Ansiolíticos e Como Funcionam",
+      "icone": "💊",
+      "tipo": "tecnico",
+      "conteudo": {
+        "_prosa": {
+          "tec_intro": "Os medicamentos para ansiedade são alguns dos <strong>mais estudados e eficazes</strong> da psiquiatria. Muitas pessoas respondem bem aos antidepressivos — embora o efeito complete demorar algumas semanas.",
+          "tec_aviso_titulo": "Informação educativa — não prescrição",
+          "tec_tipos_titulo": "Tipos de medicamentos para ansiedade:",
+          "tec_col1": "Categoria",
+          "tec_col2": "Exemplos",
+          "tec_col3": "Mecanismo",
+          "tec_func_titulo": "Como os antidepressivos (SSRIs) atuam na ansiedade:",
+          "tec_func_corpo": "Os antidepressivos não 'apagam' a ansiedade — eles <strong>reajustam</strong> o sistema de alarme ao longo de semanas. Aumentam a disponibilidade de serotonina, fortalecendo o 'freio' do córtex sobre a amígdala.",
+          "tec_func_lista": "<li>Redução da intensidade dos picos de ansiedade</li><li>Menos catastrofização automática</li><li>Melhora do sono e do humor</li><li>Menor reatividade a estímulos antes ameaçadores</li><li>Maior espaço entre gatilho e reação</li>",
+          "tec_anatomia_titulo": "Como diferentes classes atuam",
+          "tec_anatomia_corpo": "\n    <p><strong>SSRIs (ex: sertralina, escitalopram):</strong> primeira linha. Demoram 2-6 semanas para efeito completo, mas tratam a raiz do alarme desregulado.</p>\n    <p><strong>Benzodiazepínicos (ex: clonazepam, diazepam):</strong> alívio rápido, mas uso curto — risco de tolerância e dependência. Mais para crises pontuais.</p>",
+          "tec_seg_intro": "Os medicamentos para ansiedade são seguros quando usados conforme prescrito, com acompanhamento. Os antidepressivos têm <strong>décadas de pesquisa</strong> demonstrando eficácia e segurança de longo prazo.",
+          "tec_mitos_titulo": "Mitos comuns:",
+          "tec_efeitos_titulo": "Efeitos colaterais comuns nos primeiros dias (geralmente transitórios):",
+          "tec_monitor_titulo": "Acompanhamento é essencial",
+          "tec_monitor_corpo": "Revisões regulares permitem ajustar dose, trocar de medicação se necessário e monitorar efeitos. A resposta é <strong>individualizada</strong> — o que funciona para um pode não funcionar para outro."
+        },
+        "disclaimer_destaque": "Este capítulo tem caráter exclusivamente educativo. A decisão sobre medicamentos para ansiedade deve ser feita com um psiquiatra qualificado. Nunca inicie, altere ou pare medicamentos sem orientação médica.",
+        "tipos_medicamentos": [
+          { "categoria": "Antidepressivos (SSRIs)", "exemplos": "Sertralina, Escitalopram, Fluoxetina", "mecanismo": "Aumentam serotonina na fenda sináptica, reajustando o sistema de alarme ao longo de semanas" },
+          { "categoria": "Benzodiazepínicos", "exemplos": "Clonazepam, Diazepam, Alprazolam", "mecanismo": "Potenciam o GABA (freio neural) — alívio rápido, uso curto, risco de dependência" },
+          { "categoria": "Outros", "exemplos": "Buspirona, Pregabalina, Beta-bloqueadores", "mecanismo": "Ação sobre serotonina/GABA ou sintomas físicos do pânico (taquicardia)" }
+        ],
+        "mitos": [
+          { "mito": "'Ansiolítico vicia sempre'", "realidade": "Benzodiazepínicos têm risco de dependência, por isso são uso curto. Os antidepressivos (primeira linha) NÃO causam dependência — podem ser suspensos com orientação médica." },
+          { "mito": "'É máscara, não resolve'", "realidade": "O medicamento reajusta o sistema de alarme para que a terapia e as técnicas tenham espaço para funcionar. Não é máscara — é a base que permite a mudança." },
+          { "mito": "'Só para casos graves'", "realidade": "Tratamento medicamentoso é indicado quando a ansiedade dificulta o dia a dia, o sono ou a terapia. Não é sinal de fraqueza pedir ajuda." },
+          { "mito": "'Vou tomar para sempre'", "realidade": "Muitas pessoas usam por alguns meses a poucos anos e param com acompanhamento. O plano é individual — não é uma sentença vitalícia." }
+        ],
+        "efeitos_colaterais": ["Náusea leve nos primeiros dias (costuma passar)", "Alteração temporária de sono", "Boca seca", "Cefaleia leve", "Aumento inicial da ansiedade nas primeiras semanas (transitório)"]
+      }
+    },
+    {
+      "numero": 7,
+      "titulo": "Sistema Anti-Ansiedade",
+      "subtitulo": "Um Kit Prático para Recalibrar o Alarme",
+      "icone": "🛠️",
+      "tipo": "acao",
+      "conteudo": {
+        "_prosa": {
+          "acao_intro": "A boa notícia é que existem estratégias concretas que tornam a convivência com a ansiedade muito mais leve. O segredo não é 'nunca sentir ansiedade' — é construir <strong>sistemas</strong> que a desarmem quando ela aparece.",
+          "acao_principio_corpo": "Pense nas técnicas de respiração, grounding e anotação como <strong>extintores posicionados pela casa</strong>: você não evita o fogo, mas sabe exatamente onde apagar antes que espalhe.",
+          "acao_sistema_titulo": "Sistema Anti-Ansiedade:",
+          "acao_plano_titulo": "Plano de 7 Dias para Recalibrar",
+          "acao_lembrete_corpo": "A ansiedade não define quem você é. O objetivo é entender seu alarme, parar de se culpar pelo que sente e construir uma vida com mais presença, respiração e leveza."
+        },
+        "sistema_organizacao": [
+          { "passo": 1, "titulo": "Kit de Resposta Rápida", "descricao": "Tenha UM card (físico ou no celular) com 3 técnicas: respiração 4-7-8, grounding 5-4-3-2-1 e descarga corporal. Quando o alarme disparar, você não pensa — só abre o card e executa." },
+          { "passo": 2, "titulo": "Ritual de Manhã (5 minutos)", "descricao": "Antes de checar o celular: 4 ciclos de respiração 4-7-8 + nomear 3 coisas pelo qual está grato. Começa o dia com o sistema nervoso em modo 'seguro', não em alerta." },
+          { "passo": 3, "titulo": "Worry Time Diário", "descricao": "Reserve 15 minutos à noite para anotar todas as preocupações. Fora desse horário, diga à mente: 'anotei, vejo depois'. Treina a mente a esperar em vez de grassar o dia inteiro." },
+          { "passo": 4, "titulo": "Diário de Gatilhos", "descricao": "Por uma semana, anote: quando a ansiedade subiu, o que disparou, o que ajudou. Padrões aparecem. Você para de achar que a ansiedade vem 'do nada' e passa a antecipar." }
+        ],
+        "plano_7_dias": [
+          { "dia": 1, "titulo": "Observe sem julgar", "descricao": "Anote 3 momentos em que a ansiedade subiu hoje. O que acontecia ao redor? Sem criticar a si mesmo, apenas observe." },
+          { "dia": 2, "titulo": "Monte seu kit de resposta", "descricao": "Crie o card com respiração 4-7-8 + grounding 5-4-3-2-1. Deixe acessível (carteira, capa de celular, lockscreen)." },
+          { "dia": 3, "titulo": "Pratique a respiração antes do pico", "descricao": "Faça 4 ciclos de 4-7-8 ao acordar e ao deitar. Não espere a crise — treine o desarme em momento calmo." },
+          { "dia": 4, "titulo": "Agende seu Worry Time", "descricao": "Defina 15 minutos à noite só para preocupar (anotando). Quando a ansiedade vier fora da hora, diga: 'vejo às 20h'." },
+          { "dia": 5, "titulo": "Faça uma exposição pequena", "descricao": "Escolha algo que você evita por ansiedade (uma ligação, um convite) e faça só o primeiro passo — sem precisar concluir." },
+          { "dia": 6, "titulo": "Revise seus gatilhos", "descricao": "Olhe as anotações da semana: que padrões aparecem? Quais gatilhos são evitáveis? Quais precisam de técnica?" },
+          { "dia": 7, "titulo": "Ajuste e celebre", "descricao": "O que funcionou? Mantenha. O que não funcionou? Ajuste. Celebre cada vez que você desarmou o alarme — por menor que tenha sido." }
+        ],
+        "has_quiz": true,
+        "quiz_titulo": "Qual Técnica é Ideal para Você?",
+        "quiz_opcoes": [
+          { "texto": "Meu corpo acelera muito nos picos (coração, falta de ar)", "resultado": "respiracao", "mensagem": "Comece com a Respiração 4-7-8 + descarga corporal! São as técnicas mais rápidas para baixar o alarme físico." },
+          { "texto": "Minha mente viaja para o futuro com 'e se...'", "resultado": "grounding", "mensagem": "Use o Grounding 5-4-3-2-1! Ele arrasta a atenção de volta ao presente, onde o alarme realmente desarma." },
+          { "texto": "Fico remoendo o mesmo pensamento o dia todo", "resultado": "worrytime", "mensagem": "Agende um Worry Time diário! A mente aceita 'depois' melhor do que 'nunca' — e você para de grassar." },
+          { "texto": "Evito coisas por medo de passar mal", "resultado": "exposicao", "mensagem": "Comece a Exposição Gradual! Escolha um medo e faça só o primeiro degrau. Enfrentar recalibra a amígdala." },
+          { "texto": "Sinto que preciso controlar tudo para ficar tranquilo", "resultado": "cognitivo", "mensagem": "Pratique a reestruturação cognitiva! Pergunte: 'qual a evidência? e se der errado, qual o plano?'" }
+        ]
+      }
+    },
+    {
+      "numero": 8,
+      "titulo": "Neuroplasticidade: Recalibrando o Alarme",
+      "subtitulo": "Como o Cérebro Aprende a Sentir Segurança",
+      "icone": "✨",
+      "tipo": "conclusao",
+      "conteudo": {
+        "_prosa": {
+          "conc_pilares_titulo": "Como fortalecer a sensação de segurança:",
+          "conc_nootropicos_titulo": "Complementos naturais (com evidência):",
+          "conc_aviso_titulo": "Suplementos não substituem tratamento",
+          "conc_aviso_corpo": "Complementos naturais são <strong>coadjuvantes</strong> — não substituem medicamentos prescritos, terapia ou mudanças de estilo de vida. Consulte seu médico antes de iniciar qualquer um.",
+          "conc_cta_botao": "Quero o Kit Completo →",
+          "conc_cta_rodape": "Pagamento seguro via Cakto · 7 dias de garantia sem perguntas · Dúvidas? <a href=\"mailto:bookflow@ebooksaude.shop\" style=\"color:var(--color-primary);\">bookflow@ebooksaude.shop</a>"
+        },
+        "topico_principal": "Seu cérebro tem a capacidade de se reorganizar ao longo de toda a vida. Essa capacidade se chama neuroplasticidade — e ela é a chave para que a amígdala aprenda, aos poucos, a disparar só quando há perigo real. Cada vez que você respira em vez de entrar em pânico, fortalece um novo caminho.",
+        "pilares_neuroplasticidade": [
+          { "titulo": "Respiração Diária", "emoji": "🌬️", "descricao": "10 minutos por dia de respiração lenta fortalece o nervo vago. Em 8 semanas, estudos mostram redução mensurável da reatividade da amígdala." },
+          { "titulo": "Sono de Qualidade", "emoji": "😴", "descricao": "7-9 horas por noite. A privação de sono aumenta em até 30% a reatividade da amígdala no dia seguinte. Dormir bem é tratamento de ansiedade." },
+          { "titulo": "Exercício Aeróbico", "emoji": "🏃‍♀️", "descricao": "150 minutos por semana aumentam BDNF e GABA, completam o ciclo de estresse e reduzem a catastrofização. O movimento fecha a resposta de alarme." },
+          { "titulo": "Exposição Repetida", "emoji": "🎯", "descricao": "Cada vez que você enfrenta um medo pequeno e nada dá errado, a amígdala 'atualiza' seu mapa de segurança. O princípio: 'o que você evita cresce; o que você enfrenta encolhe'." }
+        ],
+        "nootropicos_naturais": [
+          { "nome": "Ashwagandha", "descricao": "Adaptógeno com mais evidência para ansiedade. Meta-análises mostram redução significativa do cortisol em 6-8 semanas." },
+          { "nome": "L-teanina", "descricao": "Aminoácido do chá verde. Aumenta ondas alfa (estado de alerta calmo). 200mg ajudam a reduzir a reatividade ao estresse." },
+          { "nome": "Magnésio (glicinato)", "descricao": "Mineral essencial para a função do GABA. Deficiência está ligada a ansiedade; suplementação mostra efeito ansiolítico leve." }
+        ],
+        "has_cta_final": true,
+        "cta_titulo": "Parabéns por chegar até aqui!",
+        "cta_descricao": "Você completou o ebook Ansiedade Descomplicada. Esse conhecimento é poder — use-o para entender seu alarme, parar de se culpar e voltar, mais vezes por dia, ao presente.",
+        "cta_beneficios": ["Acesso vitalício ao conteúdo atualizado", "Bônus: Kit Anti-Pânico em PDF (card de bolso)", "Bônus: Áudios guiados de respiração e grounding", "Comunidade exclusiva de leitores"]
+      }
+    }
+  ],
+
+  "glossario": [
+    { "termo": "Ansiedade", "categoria": "Conceito", "definicao": "Resposta natural de alerta a ameaças percebidas. Vira problema quando dispara sem perigo real, com intensidade desproporcional ou por tempo excessivo." },
+    { "termo": "Amígdala", "categoria": "Neurociência", "definicao": "Estrutura cerebral que detecta ameaças e dispara a resposta de medo. Em pessoas com ansiedade, está hipersensível." },
+    { "termo": "Eixo HPA", "categoria": "Neurociência", "definicao": "Eixo Hipotálamo-Hipófise-Adrenal. Sistema que libera cortisol em resposta ao estresse. Na ansiedade crônica, fica desregulado." },
+    { "termo": "Cortisol", "categoria": "Hormônio", "definicao": "Hormônio do estresse prolongado. Mantém o corpo em alerta; em níveis crônicos, retroalimenta a ansiedade." },
+    { "termo": "GABA", "categoria": "Neurociência", "definicao": "Neurotransmissor inibitório — o 'freio' do sistema nervoso. Reduzido na ansiedade, o alarme se mantém ligado." },
+    { "termo": "Serotonina", "categoria": "Neurociência", "definicao": "Neurotransmissor do humor e regulação do medo. A base de ação dos antidepressivos (SSRIs) para ansiedade." },
+    { "termo": "SSRIs", "categoria": "Medicamento", "definicao": "Inibidores seletivos de recaptação de serotonina (ex: sertralina, escitalopram). Primeira linha medicamentosa para ansiedade." },
+    { "termo": "Benzodiazepínicos", "categoria": "Medicamento", "definicao": "Ansiolíticos que potenciam GABA (ex: clonazepam). Alívio rápido, uso curto, risco de dependência." },
+    { "termo": "Ataque de Pânico", "categoria": "Sintoma", "definicao": "Surto súbito de medo intenso com sintomas físicos (taquicardia, falta de ar, formigamento). Pico em minutos e geralmente sem gatilho claro." },
+    { "termo": "Catastrofização", "categoria": "Padrão cognitivo", "definicao": "Pensamento automático que salta do menor indício ao pior cenário. Central na ansiedade generalizada." },
+    { "termo": "Grounding", "categoria": "Técnica", "definicao": "Conjunto de técnicas que usam os sentidos para trazer a atenção ao presente. Ex: 5-4-3-2-1 (ver, tocar, ouvir, cheirar, saborear)." },
+    { "termo": "Worry Time", "categoria": "Técnica", "definicao": "Tempo reservado no dia só para se preocupar. Treina a mente a esperar em vez de grassar o dia inteiro." }
+  ],
+
+  "_como_usar": "Carregue este ebook via URL: index.html?briefing=ansiedade. O shell detecta o parâmetro e busca briefings/ansiedade.json. O briefing original (briefings/briefing.json) permanece intacto."
+}
